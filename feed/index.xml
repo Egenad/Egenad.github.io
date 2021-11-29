@@ -8,11 +8,11 @@
 	>
 
 <channel>
-	<title>Portfolio</title>
+	<title>Ángel Terol</title>
 	<atom:link href="https://egenad.github.io/feed/" rel="self" type="application/rss+xml" />
 	<link>https://egenad.github.io</link>
-	<description>Otro sitio realizado con WordPress</description>
-	<lastBuildDate>Fri, 26 Nov 2021 10:53:08 +0000</lastBuildDate>
+	<description></description>
+	<lastBuildDate>Mon, 29 Nov 2021 20:13:17 +0000</lastBuildDate>
 	<language>es</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,22 +20,352 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.8.2</generator>
 	<item>
-		<title>¡Hola, mundo!</title>
-		<link>https://egenad.github.io/2021/11/26/hola-mundo/</link>
-					<comments>https://egenad.github.io/2021/11/26/hola-mundo/#comments</comments>
+		<title>Golden Sacra</title>
+		<link>https://egenad.github.io/2021/11/28/golden-sacra/</link>
+					<comments>https://egenad.github.io/2021/11/28/golden-sacra/#respond</comments>
 		
-		<dc:creator><![CDATA[angel]]></dc:creator>
-		<pubDate>Fri, 26 Nov 2021 10:53:08 +0000</pubDate>
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 12:13:11 +0000</pubDate>
 				<category><![CDATA[Sin categoría]]></category>
-		<guid isPermaLink="false">https://egenad.github.io/?p=1</guid>
+		<guid isPermaLink="false">https://egenad.github.io/?p=92</guid>
 
-					<description><![CDATA[Bienvenido a WordPress. Esta es tu primera entrada. Edítala o bórrala, ¡luego empieza a escribir!]]></description>
+					<description><![CDATA[Technologies used:&#160;Z80 language, RGBDS, GBTD, GBMB Golden Sacra is an adventure, RPG or nethack game, for the original Game Boy, whichis influenced by titles such as Pokémon Mystery Dungeon or Shiren the Wanderer.The game works by turns: there will be a turn for player action and another for each enemy.Each time we attack, move or&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/golden-sacra/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Golden Sacra</span></a>]]></description>
 										<content:encoded><![CDATA[
-<p>Bienvenido a WordPress. Esta es tu primera entrada. Edítala o bórrala, ¡luego empieza a escribir!</p>
+<p style="font-size:25px"><strong>Technologies used:</strong>&nbsp;Z80 language, RGBDS, GBTD, GBMB</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/GoldenSacra" target="_blank">			<strong>				RPG game made in Z80 Assembly for the original GameBoy			</strong>		</a>		<br>        <a href="https://github.com/Egenad/GoldenSacra" target="_blank">https://github.com/Egenad/GoldenSacra</a><br>        <a href="https://github.com/Egenad/GoldenSacra/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/GoldenSacra/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/GoldenSacra/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/GoldenSacra/commit/a39903c9d004ee68f14b46499eeb75d3152de1fb" target="_blank">mastermaster commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p>Golden Sacra is an adventure, RPG or nethack game, for the original Game Boy, which<br>is influenced by titles such as <strong>Pokémon Mystery Dungeon</strong> or <strong>Shiren the Wanderer</strong>.<br>The game works by turns: there will be a turn for player action and another for each enemy.<br>Each time we attack, move or use an object, our turn will be consumed. The gameplay is<br>mainly developed inside a dungeon, composed of different floors that we can access thanks<br>to some stairs that can be found in each one. </p>
+
+
+
+<p>It is done <strong>entirely in assembly language or Z80</strong>, from scratch. As a final defree project, this took around 11 months to be developed. Not only because of the difficulty of the language, but also the fact of programming in a totally <strong>unknown environment</strong>.</p>
+
+
+
+<p>At the beggining, I started with small goals, like just showing one sprite, animate it and making it move. No physics or collisions check for the moment.</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Some improvements I made with the scroll ^^ <a href="https://twitter.com/hashtag/UAGames?src=hash&amp;ref_src=twsrc%5Etfw">#UAGames</a> <a href="https://twitter.com/hashtag/GBDev?src=hash&amp;ref_src=twsrc%5Etfw">#GBDev</a> <a href="https://twitter.com/hashtag/UAGameDev?src=hash&amp;ref_src=twsrc%5Etfw">#UAGameDev</a> <a href="https://t.co/wyFOSfqOrG">pic.twitter.com/wyFOSfqOrG</a></p>&mdash; Ángel Jesús Terol (@angeljterol) <a href="https://twitter.com/angeljterol/status/1143599097569599488?ref_src=twsrc%5Etfw">June 25, 2019</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>As months passed I was able to implement the basic logic of the game, as well as some enemies, transitions, some random audio and menu popups. There was a huge problem though: the game was way <strong>too slow</strong>. For that reason I spent some months reprogramming the entire project, from an <strong>Object Oriented</strong> to an <strong>Entity-Component-System</strong> archquitecture. In the following twits you can appreciate the difference in performance:</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Hello! Long time since last update ^^U Here&#39;s the actual state of the project:<a href="https://twitter.com/hashtag/UAGameDev?src=hash&amp;ref_src=twsrc%5Etfw">#UAGameDev</a> <a href="https://twitter.com/hashtag/UAGames?src=hash&amp;ref_src=twsrc%5Etfw">#UAGames</a> <a href="https://twitter.com/hashtag/GBDev?src=hash&amp;ref_src=twsrc%5Etfw">#GBDev</a> <a href="https://twitter.com/hashtag/8bit?src=hash&amp;ref_src=twsrc%5Etfw">#8bit</a> <a href="https://t.co/ETDatQeC7K">pic.twitter.com/ETDatQeC7K</a></p>&mdash; Ángel Jesús Terol (@angeljterol) <a href="https://twitter.com/angeljterol/status/1243972500423393282?ref_src=twsrc%5Etfw">March 28, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>Almost all that was left to do was to improve the graphics and add some real sounds. Even though I couldn&#8217;t finish all the goals I had in mind since the start, I think I got a great small game overall. In the future I&#8217;ll probably continue to develop it:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Golden Sacra - Game Boy Homebrew - Demo Gameplay" width="1200" height="900" src="https://www.youtube.com/embed/N1iqpnwuTiQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://egenad.github.io/2021/11/26/hola-mundo/feed/</wfw:commentRss>
-			<slash:comments>1</slash:comments>
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/golden-sacra/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Dizzy Mouse</title>
+		<link>https://egenad.github.io/2021/11/28/dizzy-moue/</link>
+					<comments>https://egenad.github.io/2021/11/28/dizzy-moue/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 11:19:40 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=62</guid>
+
+					<description><![CDATA[Technologies used:&#160;C#, Unity, Photoshop Dizzy Mouse&#160;is a 2-players minigame where each one is a little rat. The&#160;goal&#160;of the game is&#160;to get where the cheese is, but&#160;the controls changes every 5 seconds, so it is not as easy as it seems to be. The game was made in about 12-24 hours for the Alicante 2019 GameJam. The theme we&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/dizzy-moue/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Dizzy Mouse</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong>&nbsp;C#, Unity, Photoshop</p>
+
+
+
+<p><em><strong>Dizzy Mouse</strong>&nbsp;</em>is a 2-players minigame where each one is a little rat. The&nbsp;<strong>goal</strong>&nbsp;of the game is&nbsp;<strong>to get where the cheese is</strong>, but&nbsp;<strong>the controls changes every 5 seconds</strong>, so it is not as easy as it seems to be.</p>
+
+
+
+<p>The game was made in about <strong>12-24 hours</strong> for the <strong>Alicante 2019 GameJam</strong>. The theme we were given was “<strong>perspective</strong>“, so with that in mind we got some pretty cool (and bad) ideas. In the end, we chose to do this one. We were pretty happy with the results.</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Hello guys, long time no see! We&#39;ve been this weekend at <a href="https://twitter.com/hashtag/GJALC2019?src=hash&amp;ref_src=twsrc%5Etfw">#GJALC2019</a> along with our friends <a href="https://twitter.com/Albertik97?ref_src=twsrc%5Etfw">@Albertik97</a> and <a href="https://twitter.com/AD0menech?ref_src=twsrc%5Etfw">@AD0menech</a>. We&#39;ve got a funny game called &quot;Dizzy Mouse&quot;, which, soon, you will be able to download and give it a try! <a href="https://twitter.com/hashtag/GameDev?src=hash&amp;ref_src=twsrc%5Etfw">#GameDev</a> <a href="https://twitter.com/hashtag/IndieDev?src=hash&amp;ref_src=twsrc%5Etfw">#IndieDev</a> <a href="https://t.co/kHRdBtOHkL">pic.twitter.com/kHRdBtOHkL</a></p>&mdash; Overcoded (@OvercodedGames) <a href="https://twitter.com/OvercodedGames/status/1178607762084900864?ref_src=twsrc%5Etfw">September 30, 2019</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>If you are curious about it, in the video below you can see some gameplay:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Dizzy Mouse - GameJam Alicante 2019" width="1200" height="675" src="https://www.youtube.com/embed/UPJ--fB2FIk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/dizzy-moue/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Frostyland</title>
+		<link>https://egenad.github.io/2021/11/28/c-frostyland/</link>
+					<comments>https://egenad.github.io/2021/11/28/c-frostyland/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 11:18:47 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=60</guid>
+
+					<description><![CDATA[Technologies used: C++, OpenGL, GLSL, Bullet Physics, FMod API Frostyland&#160;is an&#160;RPG,&#160;action-adventure&#160;game where its protagonist must save the kingdom of the evil penguins, who have conquered it, facing different&#160;puzzles and obstacles&#160;that are along the way to the top of the castle. It was made by a group of&#160;5 multimedia students, including me, and developed in only&#160;8 months&#160;while&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/c-frostyland/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Frostyland</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong> C++, OpenGL, GLSL, Bullet Physics, FMod API</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">			<strong>				C++ / OpenGL Game			</strong>		</a>		<br>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">https://github.com/Egenad/FrostylandABP</a><br>        <a href="https://github.com/Egenad/FrostylandABP/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/FrostylandABP/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/FrostylandABP/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/259e7100390ded1099ccb4996f816c22a9e9250f" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/a13a1541381fd9c6853647c1832aa8578a7a3adc" target="_blank">master</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/aa2b05849136283e7b5e9c1116d3cbe4756a4896" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p><em>Frostyland</em>&nbsp;is an&nbsp;<strong>RPG</strong>,&nbsp;<strong>action-adventure</strong>&nbsp;game where its protagonist must save the kingdom of the evil penguins, who have conquered it, facing different<strong>&nbsp;puzzles and obstacles</strong>&nbsp;that are along the way to the top of the castle.</p>
+
+
+
+<p>It was made by a group of&nbsp;<strong>5 multimedia students</strong>, including me, and developed in only&nbsp;<strong>8 months</strong>&nbsp;while we kept learning new things.&nbsp;<a href="https://twitter.com/OvercodedGames" target="_blank" rel="noreferrer noopener">Here</a>‘s our twitter where we uploaded a lot of the progress. The next twit shows clearly all the hard work we put in this project.</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">For this <a href="https://twitter.com/hashtag/ThrowbackThursday?src=hash&amp;ref_src=twsrc%5Etfw">#ThrowbackThursday</a> we want to show a comparison between the first version of Frostyland with the basics mechanics from 8 months ago and the latest version. We are so proud of what we&#39;ve done on these months of hard work! <a href="https://twitter.com/hashtag/UAGames?src=hash&amp;ref_src=twsrc%5Etfw">#UAGames</a> <a href="https://twitter.com/hashtag/UAGameDev?src=hash&amp;ref_src=twsrc%5Etfw">#UAGameDev</a> <a href="https://twitter.com/hashtag/GameDev?src=hash&amp;ref_src=twsrc%5Etfw">#GameDev</a> <a href="https://twitter.com/hashtag/IndieDev?src=hash&amp;ref_src=twsrc%5Etfw">#IndieDev</a> <a href="https://t.co/3IA3GCLx7V">pic.twitter.com/3IA3GCLx7V</a></p>&mdash; Overcoded (@OvercodedGames) <a href="https://twitter.com/OvercodedGames/status/1131501832939999232?ref_src=twsrc%5Etfw">May 23, 2019</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>The team as a whole was&nbsp;<strong>very happy</strong>&nbsp;<strong>with the final result</strong>, although somewhat sad because the academic year came to an end.</p>
+
+
+
+<p>Throughout the year we had to make several&nbsp;<strong>exhibitions</strong>&nbsp;<strong>in which we showed</strong>&nbsp;<strong>all the progress we had achieved in the previous months</strong>. Those spheres were practically the only thing we had the week before the Christmas holidays…</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Frostyland Gameplay" width="1200" height="900" src="https://www.youtube.com/embed/7gKsnNusrOk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/c-frostyland/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Redsea</title>
+		<link>https://egenad.github.io/2021/11/28/z80-redsea/</link>
+					<comments>https://egenad.github.io/2021/11/28/z80-redsea/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 11:18:04 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=58</guid>
+
+					<description><![CDATA[Technologies used: Z80 Language, CPCTelera At the start of the academic year the first thing our teacher said was “If you want to program as professionals you have to know how the machine works inside”, so we had to learn and make a simple game in assembly for the Amstrad CPC 472. Also, our score depended&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/z80-redsea/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Redsea</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong> Z80 Language, CPCTelera</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/Redsea" target="_blank">			<strong>				Amstrad game made in Z80 language			</strong>		</a>		<br>        <a href="https://github.com/Egenad/Redsea" target="_blank">https://github.com/Egenad/Redsea</a><br>        <a href="https://github.com/Egenad/Redsea/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/Redsea/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/Redsea/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/82edf8c0a1e5dfc9c49ad155227f1ca03481dd2a" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/67a819e650eb34dbec935ef2775fb806b18920f7" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p>At the start of the academic year the first thing our teacher said was “If you want to program as professionals you have to know how the machine works inside”, so we had to learn and make a simple game in assembly for the Amstrad CPC 472.</p>
+
+
+
+<p>Also, our score depended on the position we achieved in the international competition <a href="https://twitter.com/CPCRetroDev" target="_blank" rel="noreferrer noopener">#CPCRetroDev</a>, organized by our teacher as well.</p>
+
+
+
+<p>This was the first time we even heard about assembly language, so we were panicking a bit…</p>
+
+
+
+<p>At the start we tried making very simplistic programs to learn the basics and improve from that. We made a&nbsp;<a rel="noreferrer noopener" href="https://twitter.com/GameroidUA" target="_blank">twitter</a> were we were uploading all the small progresses.</p>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">We&#39;ve made a little game prototype where your goal is to reach the final door avoiding rocks falling down! On the top-left corner you can see a light that turns red if the player has collided with the rocks and turns blue if you have completed the level. <a href="https://twitter.com/hashtag/CPCRetroDev?src=hash&amp;ref_src=twsrc%5Etfw">#CPCRetroDev</a> <a href="https://twitter.com/hashtag/gamedev?src=hash&amp;ref_src=twsrc%5Etfw">#gamedev</a> <a href="https://t.co/1M614g1kgm">pic.twitter.com/1M614g1kgm</a></p>&mdash; Gameroid (@GameroidUA) <a href="https://twitter.com/GameroidUA/status/1044540088057819137?ref_src=twsrc%5Etfw">September 25, 2018</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>Weeks passed and finally got something we could call a “game”. It was very short and because of it we couldn’t rank higher in the standings.</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">We are really proud to say that our game, Redsea, it&#39;s almost finished and will be participating this year in <a href="https://twitter.com/hashtag/CPCRetroDev?src=hash&amp;ref_src=twsrc%5Etfw">#CPCRetroDev</a>! Here you have a little preview of the game. <img src="https://s.w.org/images/core/emoji/13.1.0/72x72/2620.png" alt="☠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <a href="https://twitter.com/hashtag/AmstradCPC?src=hash&amp;ref_src=twsrc%5Etfw">#AmstradCPC</a> <a href="https://twitter.com/hashtag/Amstrad?src=hash&amp;ref_src=twsrc%5Etfw">#Amstrad</a> <a href="https://twitter.com/hashtag/gamedev?src=hash&amp;ref_src=twsrc%5Etfw">#gamedev</a> <a href="https://twitter.com/hashtag/indiedev?src=hash&amp;ref_src=twsrc%5Etfw">#indiedev</a> <a href="https://twitter.com/hashtag/Z80?src=hash&amp;ref_src=twsrc%5Etfw">#Z80</a> <a href="https://t.co/utVRM4rL0E">pic.twitter.com/utVRM4rL0E</a></p>&mdash; Gameroid (@GameroidUA) <a href="https://twitter.com/GameroidUA/status/1057040924201619456?ref_src=twsrc%5Etfw">October 29, 2018</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>We finished at the 12th position, with what were pretty happy about. If you want to see the whole conference, you can do it&nbsp;<a rel="noreferrer noopener" href="http://www.youtube.com/watch?v=N0Hwho0iWM0" target="_blank">here</a>. Also, all the games (alongside with the ones from previous years), can be find and downloaded from the official website of&nbsp;<a rel="noreferrer noopener" href="http://cpcretrodev.byterealms.com/" target="_blank">#CPCRetroDev</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/z80-redsea/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Apollo X</title>
+		<link>https://egenad.github.io/2021/11/28/c-apollo-x/</link>
+					<comments>https://egenad.github.io/2021/11/28/c-apollo-x/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 11:15:08 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=55</guid>
+
+					<description><![CDATA[Technologies used:&#160;C++, SFML Note: graphics and audio are not of our own. Apollo X is a&#160;Shoot ’em up&#160;game in which the player tries to conquer other planets of the galaxy. It has&#160;2 modes: Story and Infinite. In the&#160;Story&#160;mode you unlock planets along with your progress. In the&#160;Infinite&#160;mode you simply try to survive while&#160;gathering materials for&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/c-apollo-x/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Apollo X</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong>&nbsp;C++, SFML</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/ApolloX" target="_blank">			<strong>				ABP FV			</strong>		</a>		<br>        <a href="https://github.com/Egenad/ApolloX" target="_blank">https://github.com/Egenad/ApolloX</a><br>        <a href="https://github.com/Egenad/ApolloX/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/ApolloX/stargazers" target="_blank">1</a> stars.<br>        <a href="https://github.com/Egenad/ApolloX/issues" target="_blank">8</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/ApolloX/commit/1f54ea4f9c9bdce51f01dc17d675c339bad6c58f" target="_blank">Add files via upload</a>, GitHub                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/ApolloX/commit/771155ab74ae26816b63f40fdc334b0b9b85427f" target="_blank">Add files via upload</a>, GitHub                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/ApolloX/commit/2a57508f82f4c406f0ce961bfe01ae444418e5ef" target="_blank">Add files via upload</a>, GitHub                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/ApolloX/commit/2670204172bba27336bbcc12df0de3979682de9b" target="_blank">Add files via upload</a>, GitHub                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/ApolloX/commit/db0ce44a966d6d8b8b4d67b2a654d7be177af8ac" target="_blank">Add files via upload</a>, GitHub                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p><strong>Note: graphics and audio are not of our own.</strong></p>
+
+
+
+<p>Apollo X is a&nbsp;<strong>Shoot ’em up</strong>&nbsp;game in which the player tries to conquer other planets of the galaxy. It has&nbsp;<strong>2 modes: Story and Infinite</strong>. In the&nbsp;<strong>Story</strong>&nbsp;mode you unlock planets along with your progress. In the&nbsp;<strong>Infinite</strong>&nbsp;mode you simply try to survive while&nbsp;<strong>gathering materials for reparing your ship</strong>&nbsp;and recover all the health&nbsp;<strong>(the health you loose in story mode won’t recover at the end of the levels</strong>).</p>
+
+
+
+<p>This game was made by&nbsp;<strong>4 multimedia students</strong>, being the first game we ever made. The game was very&nbsp;<strong>simple but</strong>&nbsp;it was&nbsp;<strong>finished</strong>&nbsp;as a product.</p>
+
+
+
+<p>The&nbsp;<strong>GitHub</strong>&nbsp;with all the code can be found&nbsp;<a href="https://github.com/Egenad/ApolloX" target="_blank" rel="noreferrer noopener">here</a>. And the gameplay video (we got&nbsp;<strong>problems with the recorder</strong>&nbsp;so there’s no audio and the framerate drops are not from the game itself):</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Apollo X - Fundamentos de los Videojuegos" width="1200" height="900" src="https://www.youtube.com/embed/riCcJJ7yl48?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/c-apollo-x/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Pacman Clone</title>
+		<link>https://egenad.github.io/2021/11/28/c-pacman-clone/</link>
+					<comments>https://egenad.github.io/2021/11/28/c-pacman-clone/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 11:13:37 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=53</guid>
+
+					<description><![CDATA[Technologies used: C++, SFML Note: graphics and audio are not of our own. This project was&#160;my first interaction&#160;with the world of videogames. Its&#160;purpose&#160;was to make me&#160;learn&#160;about how videogames could be made, practice&#160;by my own&#160;and try to be more comfortable programming in C++. The code is a bit messy and the result is not the best, but&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/c-pacman-clone/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Pacman Clone</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong> C++, SFML</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/PacmanClone" target="_blank">			<strong>							</strong>		</a>		<br>        <a href="https://github.com/Egenad/PacmanClone" target="_blank">https://github.com/Egenad/PacmanClone</a><br>        <a href="https://github.com/Egenad/PacmanClone/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/PacmanClone/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/PacmanClone/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/PacmanClone/commit/b41c37c19c96c55ba83fa608d99d596f804d1886" target="_blank">Add files via upload</a>, GitHub                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p><strong>Note: graphics and audio are not of our own.</strong></p>
+
+
+
+<p>This project was&nbsp;<strong>my first interaction</strong>&nbsp;with the world of videogames. Its&nbsp;<strong>purpose</strong>&nbsp;was to make me<strong>&nbsp;learn</strong>&nbsp;about how videogames could be made, practice&nbsp;<strong>by my own</strong>&nbsp;and try to be more comfortable programming in C++. The code is a bit messy and the result is not the best, but it was a&nbsp;<strong>nice experience</strong>.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Pacman Clone" width="1200" height="900" src="https://www.youtube.com/embed/TbA1TmDTgXo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/c-pacman-clone/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Solar System</title>
+		<link>https://egenad.github.io/2021/11/28/solar-system-maxscript/</link>
+					<comments>https://egenad.github.io/2021/11/28/solar-system-maxscript/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Sun, 28 Nov 2021 10:35:37 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=48</guid>
+
+					<description><![CDATA[Technologies used:&#160;3DS Max As an&#160;individual project&#160;for the modeling subject we had to program an script of whatever the teached told us to do. In my case it was a working&#160;solar system. The program was fully programmed in&#160;MaxScript&#160;and the full&#160;source&#160;of the script is&#160;in the video&#160;posted right below. Every explanation of it is in spanish as it&#8230;&#160;<a href="https://egenad.github.io/2021/11/28/solar-system-maxscript/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">Solar System</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong>&nbsp;3DS Max</p>
+
+
+
+<p>As an&nbsp;<strong>individual project</strong>&nbsp;for the modeling subject we had to program an script of whatever the teached told us to do. In my case it was a working&nbsp;<strong>solar system</strong>.</p>
+
+
+
+<p>The program was fully programmed in<strong>&nbsp;MaxScript</strong>&nbsp;and the full&nbsp;<strong>source</strong>&nbsp;of the script is<strong>&nbsp;in the video</strong>&nbsp;posted right below. Every explanation of it is in spanish as it was for my teacher, but you can have a look.</p>
+
+
+
+<p><strong>Note: This video is in Spanish</strong></p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Trabajo Teórico MAC - MaxScript - Sistema Solar" width="1200" height="675" src="https://www.youtube.com/embed/ybkF3M9pw24?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2021/11/28/solar-system-maxscript/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
 		
 		
 			</item>
