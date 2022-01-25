@@ -12,7 +12,7 @@
 	<atom:link href="https://egenad.github.io/feed/" rel="self" type="application/rss+xml" />
 	<link>https://egenad.github.io</link>
 	<description></description>
-	<lastBuildDate>Tue, 25 Jan 2022 11:46:02 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 25 Jan 2022 13:01:34 +0000</lastBuildDate>
 	<language>es</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -37,9 +37,9 @@
 				<category><![CDATA[Sin categoría]]></category>
 		<guid isPermaLink="false">https://egenad.github.io/?p=147</guid>
 
-					<description><![CDATA[Technologies used: Unreal Engine 5 / C++ / Blueprints This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the hardware. Now, instead of the Pokemon Mystery Dungeon titles, I&#8217;m using as reference a not&#8230;&#160;<a href="https://egenad.github.io/2022/01/25/wip-dungeon-crawler/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">(WIP) Dungeon Crawler</span></a>]]></description>
+					<description><![CDATA[Technologies used:&#160;Unreal Engine 5 / C++ / Blueprints This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the hardware. Now, instead of the Pokemon Mystery Dungeon titles, I&#8217;m using as reference a not&#8230;&#160;<a href="https://egenad.github.io/2022/01/25/wip-dungeon-crawler/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">(WIP) Dungeon Crawler</span></a>]]></description>
 										<content:encoded><![CDATA[
-<p><strong>Technologies used:</strong> Unreal Engine 5 / C++ / Blueprints</p>
+<p><strong>Technologies used:</strong>&nbsp;Unreal Engine 5 / C++ / Blueprints</p>
 
 
 
@@ -66,6 +66,10 @@
 <figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
 <blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Some characters I made <a href="https://t.co/8lv1SXDJgA">pic.twitter.com/8lv1SXDJgA</a></p>&mdash; Ángel Jesús Terol (@angeljterol) <a href="https://twitter.com/angeljterol/status/1484660400994017284?ref_src=twsrc%5Etfw">January 21, 2022</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="341" src="https://egenad.github.io/wp-content/uploads/2022/01/textures-1024x341.png" alt="" class="wp-image-155" srcset="https://egenad.github.io/wp-content/uploads/2022/01/textures-1024x341.png 1024w, https://egenad.github.io/wp-content/uploads/2022/01/textures-300x100.png 300w, https://egenad.github.io/wp-content/uploads/2022/01/textures-768x256.png 768w, https://egenad.github.io/wp-content/uploads/2022/01/textures-1536x512.png 1536w, https://egenad.github.io/wp-content/uploads/2022/01/textures-2048x683.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
