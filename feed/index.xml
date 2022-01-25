@@ -12,13 +12,13 @@
 	<atom:link href="https://egenad.github.io/feed/" rel="self" type="application/rss+xml" />
 	<link>https://egenad.github.io</link>
 	<description></description>
-	<lastBuildDate>Mon, 29 Nov 2021 20:13:17 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 25 Jan 2022 11:46:02 +0000</lastBuildDate>
 	<language>es</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.8.2</generator>
+	<generator>https://wordpress.org/?v=5.8.3</generator>
 
 <image>
 	<url>https://egenad.github.io/wp-content/uploads/2021/11/cropped-cropped-cropped-cropped-logoweb-e1638094368848-2-32x32.png</url>
@@ -28,6 +28,130 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>(WIP) Dungeon Crawler</title>
+		<link>https://egenad.github.io/2022/01/25/wip-dungeon-crawler/</link>
+					<comments>https://egenad.github.io/2022/01/25/wip-dungeon-crawler/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Tue, 25 Jan 2022 10:53:00 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=147</guid>
+
+					<description><![CDATA[Technologies used: Unreal Engine 5 / C++ / Blueprints This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the hardware. Now, instead of the Pokemon Mystery Dungeon titles, I&#8217;m using as reference a not&#8230;&#160;<a href="https://egenad.github.io/2022/01/25/wip-dungeon-crawler/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">(WIP) Dungeon Crawler</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong> Unreal Engine 5 / C++ / Blueprints</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/DCrawler" target="_blank">			<strong>				Simple Dungeon Crawler made in UE5			</strong>		</a>		<br>        <a href="https://github.com/Egenad/DCrawler" target="_blank">https://github.com/Egenad/DCrawler</a><br>        <a href="https://github.com/Egenad/DCrawler/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/DCrawler/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/DCrawler/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/DCrawler/commit/afe009340c3a8e5459f3632e4a95b5014be2eecf" target="_blank">Basic Button Logic</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/DCrawler/commit/4bfb735966bdac00d6223baa192526c17419e0a7" target="_blank">minor changes</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/DCrawler/commit/069faa880dc8cb373b73c71e5d5e0a9ce5171669" target="_blank">Width Height reinitialize</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/DCrawler/commit/c0e43008cf3970b4c6f60c1ed891cd1adcaa68fa" target="_blank">tilemap tile array sort fix</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/DCrawler/commit/cdbe3328ad0aabe6ba008b210e6a94cd7ed67cc7" target="_blank">textures</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+</div></figure>
+
+
+
+<p>This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the hardware. Now, instead of the Pokemon Mystery Dungeon titles, I&#8217;m using as reference a not well know game for the original Nintendo DS called <em>Orcs &amp; Elves</em>.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="Orcs &amp; Elves (Nintendo DS)-100% kills and secrets." width="1200" height="675" src="https://www.youtube.com/embed/bKbVzOJPwYE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div><figcaption>Orcs &amp; Elves (Nintendo DS) Gameplay</figcaption></figure>
+
+
+
+<p>The first thing was to choose a style for the game. For that reason I started making some basic character designs and some textures:</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Some characters I made <a href="https://t.co/8lv1SXDJgA">pic.twitter.com/8lv1SXDJgA</a></p>&mdash; Ángel Jesús Terol (@angeljterol) <a href="https://twitter.com/angeljterol/status/1484660400994017284?ref_src=twsrc%5Etfw">January 21, 2022</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>Now in full C++ I made a simple map editor to help me creating the different playable maps and expand the prototype upon it:</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Trying to make some fast map editor for a tiled game<a href="https://twitter.com/hashtag/UnrealEngine5?src=hash&amp;ref_src=twsrc%5Etfw">#UnrealEngine5</a> <a href="https://t.co/yZPc5soMom">pic.twitter.com/yZPc5soMom</a></p>&mdash; Ángel Jesús Terol (@angeljterol) <a href="https://twitter.com/angeljterol/status/1485936514085363713?ref_src=twsrc%5Etfw">January 25, 2022</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2022/01/25/wip-dungeon-crawler/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>ZombieStation</title>
+		<link>https://egenad.github.io/2022/01/25/zombiestation/</link>
+					<comments>https://egenad.github.io/2022/01/25/zombiestation/#respond</comments>
+		
+		<dc:creator><![CDATA[Miyas]]></dc:creator>
+		<pubDate>Tue, 25 Jan 2022 08:59:41 +0000</pubDate>
+				<category><![CDATA[Sin categoría]]></category>
+		<guid isPermaLink="false">https://egenad.github.io/?p=134</guid>
+
+					<description><![CDATA[Technologies used: Unreal Engine 4 / C++ / Blueprints ZombieStation is a VR game made with Unreal Engine for the Neo Coliseum Immersive Reality SL. It&#8217;s main goal is to make the player experience an hybrid between the virtual and real world, using for that tracked objects like a lever or a weapon and using specific&#8230;&#160;<a href="https://egenad.github.io/2022/01/25/zombiestation/" class="" rel="bookmark">Leer más &#187;<span class="screen-reader-text">ZombieStation</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Technologies used:</strong> Unreal Engine 4 / C++ / Blueprints</p>
+
+
+
+<p>ZombieStation is a VR game made with <strong>Unreal Engine</strong> for the <strong>Neo Coliseum Immersive Reality SL</strong>.  It&#8217;s main goal is to make the player experience an hybrid between the virtual and real world, using for that tracked objects like a lever or a weapon and using specific simulators.</p>
+
+
+
+<p>For example: the game has 2 different playable maps, and when the first one is completed, the players have to get on the subway. In the virtual world they can see the entire subway, but with objects that can indicate the limits of the platform that they are standing on in the real world.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="576" src="https://egenad.github.io/wp-content/uploads/2022/01/photo_2021-12-15_23-37-55-1024x576.jpg" alt="" class="wp-image-139" srcset="https://egenad.github.io/wp-content/uploads/2022/01/photo_2021-12-15_23-37-55-1024x576.jpg 1024w, https://egenad.github.io/wp-content/uploads/2022/01/photo_2021-12-15_23-37-55-300x169.jpg 300w, https://egenad.github.io/wp-content/uploads/2022/01/photo_2021-12-15_23-37-55-768x432.jpg 768w, https://egenad.github.io/wp-content/uploads/2022/01/photo_2021-12-15_23-37-55.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Demo made for the National Police forces</figcaption></figure>
+
+
+
+<p>For the tracking part we tried different takes, but ended using 5 Vive trackers for the body, alongside with the headset and the Vive controller which is the main weapon. The default limits of the playable area are deleted and replaced with custom ones as it helps us more showing the player where not to step.</p>
+
+
+
+<p>The main problem with this kind of tracking are the occlusions. That&#8217;s why sometimes the body of the player inside the game deforms. Even tho for the player itself that has this occlusion is not a problem, for your teammate can be annoying. This is because you can only see your own hands and foots, but not the rest of the body. For teammates, the entire body is shown.</p>
+
+
+
+<p>Another thing we made to amplify this sense of realism was to 3D scan all players and put their models inside the game. We used a external app called <em>In3D</em> which, with just an iphone, could export a .FBX of the entire body (with an skeleton). To put it in Unreal, we made a simple script in python which, with the help of the <em>Auto-Rig Pro</em> plugin, transformed the initial skeleton and rigged it, so we could end with one identical to the ue4 default skeleton.</p>
+
+
+
+<p>The next video doesn&#8217;t have most of the SFX because it&#8217;s server-side:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="ZombieStation 64 bit Development PCD3D SM5  2021 09 13 13 32 59" width="1200" height="675" src="https://www.youtube.com/embed/9FyABJOHhM8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+
+
+
+<p>And some out-of-the-game:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="nv-iframe-embed"><iframe loading="lazy" title="video 2022 01 25 11 10 36" width="1200" height="675" src="https://www.youtube.com/embed/kkqah8foAgc?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://egenad.github.io/2022/01/25/zombiestation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Golden Sacra</title>
 		<link>https://egenad.github.io/2021/11/28/golden-sacra/</link>
 					<comments>https://egenad.github.io/2021/11/28/golden-sacra/#respond</comments>
@@ -152,7 +276,7 @@
 
 
 <figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
-<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">			<strong>				C++ / OpenGL Game			</strong>		</a>		<br>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">https://github.com/Egenad/FrostylandABP</a><br>        <a href="https://github.com/Egenad/FrostylandABP/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/FrostylandABP/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/FrostylandABP/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/259e7100390ded1099ccb4996f816c22a9e9250f" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/a13a1541381fd9c6853647c1832aa8578a7a3adc" target="_blank">master</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/aa2b05849136283e7b5e9c1116d3cbe4756a4896" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">			<strong>				C++ / OpenGL Game			</strong>		</a>		<br>        <a href="https://github.com/Egenad/FrostylandABP" target="_blank">https://github.com/Egenad/FrostylandABP</a><br>        <a href="https://github.com/Egenad/FrostylandABP/network" target="_blank">1</a> forks.<br>        <a href="https://github.com/Egenad/FrostylandABP/stargazers" target="_blank">1</a> stars.<br>        <a href="https://github.com/Egenad/FrostylandABP/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/259e7100390ded1099ccb4996f816c22a9e9250f" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/a13a1541381fd9c6853647c1832aa8578a7a3adc" target="_blank">master</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/FrostylandABP/commit/aa2b05849136283e7b5e9c1116d3cbe4756a4896" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
 </div></figure>
 
 
@@ -206,7 +330,7 @@
 
 
 <figure class="wp-block-embed is-type-rich is-provider-incrustado wp-block-embed-incrustado"><div class="wp-block-embed__wrapper">
-<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/Redsea" target="_blank">			<strong>				Amstrad game made in Z80 language			</strong>		</a>		<br>        <a href="https://github.com/Egenad/Redsea" target="_blank">https://github.com/Egenad/Redsea</a><br>        <a href="https://github.com/Egenad/Redsea/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/Redsea/stargazers" target="_blank">0</a> stars.<br>        <a href="https://github.com/Egenad/Redsea/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/82edf8c0a1e5dfc9c49ad155227f1ca03481dd2a" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/67a819e650eb34dbec935ef2775fb806b18920f7" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
+<div class="github-embed github-embed-repository github-logo-mark">    <p>        <a href="https://github.com/Egenad/Redsea" target="_blank">			<strong>				Amstrad game made in Z80 language			</strong>		</a>		<br>        <a href="https://github.com/Egenad/Redsea" target="_blank">https://github.com/Egenad/Redsea</a><br>        <a href="https://github.com/Egenad/Redsea/network" target="_blank">0</a> forks.<br>        <a href="https://github.com/Egenad/Redsea/stargazers" target="_blank">1</a> stars.<br>        <a href="https://github.com/Egenad/Redsea/issues" target="_blank">0</a> open issues.<br>        <details open>            <summary>Recent commits:</summary>            <ul class="github_commits">                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/82edf8c0a1e5dfc9c49ad155227f1ca03481dd2a" target="_blank">source</a>, Angel Terol                    </li>                                    <li class="github_commit">                        <a href="https://github.com/Egenad/Redsea/commit/67a819e650eb34dbec935ef2775fb806b18920f7" target="_blank">Initial commit</a>, Angel Terol                    </li>                            </ul>        </details>    </p></div>
 </div></figure>
 
 
