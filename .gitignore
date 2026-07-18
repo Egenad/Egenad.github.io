@@ -13,6 +13,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 
+AGENTS.md
+CLAUDE.md
+
 # environment variables
 .env
 .env.production
