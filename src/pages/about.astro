@@ -1,0 +1,72 @@
+---
+import Layout from '../components/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<Layout title="About | Ángel J. Terol" description="About Ángel J. Terol, Multimedia Engineering graduate and game/software developer.">
+	<Header slot="header" />
+
+	<div class="container">
+		<header class="page-header">
+			<h1>About</h1>
+		</header>
+
+		<div class="about-layout">
+			<aside class="about-profile">
+				<img src="/images/2024/11/icon_512.png" alt="Ángel Jesús Terol" width="512" height="512" />
+				<h2>Ángel Jesús Terol Martínez</h2>
+				<SocialLinks />
+			</aside>
+
+			<div class="about-content">
+				<p class="about-bio">
+					Multimedia Engineering graduate with experience in software development, game creation, and enterprise applications. Skilled in programming with Assembly, C++, and Java, with a strong foundation in building custom solutions, including graphics engines and backend systems. Experienced in immersive technologies like VR and in developing scalable applications using frameworks such as Spring Boot. Adept at adapting to diverse challenges and delivering innovative, efficient solutions.
+				</p>
+
+				<h2>Work Experience</h2>
+				<div class="experience-list">
+					<article class="experience-item">
+						<img src="/images/2024/11/logosystems.png" alt="Systems, Servers & Solutions SL" width="682" height="382" />
+						<div>
+							<h3>Systems, Servers & Solutions SL.</h3>
+							<p class="period">Mutxamel, 2023 – 2024</p>
+							<ul>
+								<li>Java 17 Developer</li>
+								<li>Spring Boot</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="experience-item">
+						<img src="/images/2024/11/fundamentia-logo.png" alt="Fundamentia" width="504" height="60" />
+						<div>
+							<h3>Fundamentia</h3>
+							<p class="period">Elche/Elx, 2022 – 2023</p>
+							<ul>
+								<li>Java 8 Developer</li>
+								<li>Automated analysis of banking documents.</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="experience-item">
+						<img src="/images/2024/11/images.png" alt="NeoColiseumVR" width="420" height="120" />
+						<div>
+							<h3>NeoColiseumVR</h3>
+							<p class="period">Sant Joan, 2019 – 2022</p>
+							<ul>
+								<li>VR Game Programmer</li>
+								<li>Unreal Engine 4 / 5</li>
+								<li>C++ / Blueprints</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<Footer slot="footer" />
+</Layout>

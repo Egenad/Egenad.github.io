@@ -1,0 +1,22 @@
+---
+import type { Project } from '../data/projects';
+
+export interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+	<a href={`/project/${project.slug}/`} class="card-media">
+		<img src={project.featuredImage} alt={project.title} loading="lazy" />
+	</a>
+	<div class="card-content">
+		<h2 class="card-title">
+			<a href={`/project/${project.slug}/`}>{project.title}</a>
+		</h2>
+		<p class="card-excerpt">{project.excerpt}</p>
+		{project.technologies && <p class="card-tech">{project.technologies}</p>}
+	</div>
+</article>

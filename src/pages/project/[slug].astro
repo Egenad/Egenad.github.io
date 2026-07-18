@@ -1,0 +1,42 @@
+---
+import Layout from '../../components/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { projects, getProject } from '../../data/projects';
+
+export async function getStaticPaths() {
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Ángel J. Terol`} description={project.excerpt}>
+	<Header slot="header" />
+
+	<div class="container">
+		<article class="project-detail">
+			<img src={project.featuredImage} alt={project.title} class="project-hero" />
+
+			<h1>{project.title}</h1>
+			<p class="project-meta">
+				{project.year}{project.technologies ? ` · ${project.technologies}` : ''}
+			</p>
+
+			{project.github && (
+				<div class="project-actions">
+					<a href={project.github} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+						View on GitHub
+					</a>
+				</div>
+			)}
+
+			<div class="project-content" set:html={project.content} />
+		</article>
+	</div>
+
+	<Footer slot="footer" />
+</Layout>

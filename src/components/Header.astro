@@ -1,0 +1,36 @@
+---
+const navItems = [
+	{ label: 'Portfolio', href: '/' },
+	{ label: 'About', href: '/about' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a href="/" class="brand">
+			<img src="/images/2024/11/iconnobg.png" alt="Ángel J. Terol" class="brand-logo" width="48" height="48" />
+			<span class="brand-title">Ángel J. Terol</span>
+		</a>
+
+		<nav class="main-nav" aria-label="Main navigation">
+			<ul class="nav-list">
+				{navItems.map((item) => (
+					<li>
+						<a
+							href={item.href}
+							class={currentPath === item.href || currentPath === `${item.href}/` ? 'active' : ''}
+						>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<a href="https://drive.google.com/file/d/1ocRLSkvl_SU88qA-o8vohKZEfff8lamU/view" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+			CV
+		</a>
+	</div>
+</header>
