@@ -1,16 +1,14 @@
 ---
 const navItems = [
-	{ label: 'Portfolio', href: '/' },
-	{ label: 'About', href: '/about' },
+	{ label: 'Portfolio', href: '#portfolio' },
+	{ label: 'About', href: '#about' },
 ];
-
-const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
 	<div class="container header-inner">
-		<a href="/" class="brand">
-			<img src="/images/2024/11/iconnobg.png" alt="Ángel J. Terol" class="brand-logo" width="48" height="48" />
+		<a href="#about" class="brand">
+			<img src="/images/2024/11/iconnobg.png" alt="Ángel J. Terol" class="brand-logo" width="80" height="80" />
 			<span class="brand-title">Ángel J. Terol</span>
 		</a>
 
@@ -18,12 +16,7 @@ const currentPath = Astro.url.pathname;
 			<ul class="nav-list">
 				{navItems.map((item) => (
 					<li>
-						<a
-							href={item.href}
-							class={currentPath === item.href || currentPath === `${item.href}/` ? 'active' : ''}
-						>
-							{item.label}
-						</a>
+						<a href={item.href}>{item.label}</a>
 					</li>
 				))}
 			</ul>

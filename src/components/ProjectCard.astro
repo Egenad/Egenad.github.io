@@ -3,20 +3,29 @@ import type { Project } from '../data/projects';
 
 export interface Props {
 	project: Project;
+	class?: string;
 }
 
-const { project } = Astro.props;
+const { project, class: className } = Astro.props;
+
+const techList = project.technologies
+	? project.technologies.split(/\s*\/\s*|\s*,\s*/).filter(Boolean)
+	: [];
 ---
 
-<article class="project-card">
-	<a href={`/project/${project.slug}/`} class="card-media">
-		<img src={project.featuredImage} alt={project.title} loading="lazy" />
+<article class:list={['project-card', className]}>
+	<a href={`/project/${project.slug}/`} class="card-link">
+		<img src={project.featuredImage} alt={project.title} loading="lazy" class="card-bg" />
+		<div class="card-overlay">
+			<h2 class="card-title">{project.title}</h2>
+			<p class="card-excerpt">{project.excerpt}</p>
+			{techList.length > 0 && (
+				<div class="card-tags">
+					{techList.map((tech) => (
+						<span class="card-tag">{tech.trim()}</span>
+					))}
+				</div>
+			)}
+		</div>
 	</a>
-	<div class="card-content">
-		<h2 class="card-title">
-			<a href={`/project/${project.slug}/`}>{project.title}</a>
-		</h2>
-		<p class="card-excerpt">{project.excerpt}</p>
-		{project.technologies && <p class="card-tech">{project.technologies}</p>}
-	</div>
 </article>
