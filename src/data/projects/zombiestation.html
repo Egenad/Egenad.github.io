@@ -1,0 +1,21 @@
+<div class="entry-content is-layout-flow">
+<p><strong>Technologies used:</strong> Unreal Engine 4 / C++ / Blueprints</p>
+<p>ZombieStation is a VR game made with <strong>Unreal Engine</strong> for the <strong>Neo Coliseum Immersive Reality SL</strong>. It’s main goal is to make the player experience an hybrid between the virtual and real world, using for that tracked objects like a lever or a weapon and using specific simulators.</p>
+<p>For example: the game has 2 different playable maps, and when the first one is completed, the players have to get on the subway. In the virtual world they can see the entire subway, but with objects that can indicate the limits of the platform that they are standing on in the real world.</p>
+<div>
+<div></div>
+<div>
+<img height="556" src="/images/2024/11/photo_2021-08-30_13-34-37.jpg" width="1024"/><img height="576" src="/images/2024/11/1920-1080-max.png" width="1024"/><img height="521" src="/images/2024/11/2016-1024-1.png" width="1024"/><img height="576" src="/images/2024/11/4096-2304-max-1.png" width="1024"/><img height="576" src="/images/2024/11/photo_2021-12-15_23-37-53.jpg" width="1024"/><img height="576" src="/images/2024/11/photo_2021-12-15_23-37-55.jpg" width="1024"/><img height="576" src="/images/2024/11/photo_2021-12-15_23-37-56.jpg" width="1024"/>
+</div>
+</div>
+<p>For the tracking part we tried different takes, but ended using 5 Vive trackers for the body, alongside with the headset and the Vive controller which is the main weapon. The default limits of the playable area are deleted and replaced with custom ones as it helps us more showing the player where not to step.</p>
+<p>The main problem with this kind of tracking are the occlusions. That’s why sometimes the body of the player inside the game deforms. Even tho for the player itself that has this occlusion is not a problem, for your teammate can be annoying. This is because you can only see your own hands and foots, but not the rest of the body. For teammates, the entire body is shown. A solution for this could be the mix of accelerometers, like the tracking system of XSENS, with the ones we have.</p>
+<p>Another thing we made to amplify this sense of realism was to 3D scan all players and put their models inside the game. We used a external app called <em>In3D</em> which, with just an iphone, could export a .FBX of the entire body (with an skeleton). To put it in Unreal, we made a simple script in python which, with the help of the <em>Auto-Rig Pro</em> plugin, transformed the initial skeleton and rigged it, so we could end with one identical to the ue4 default skeleton.</p>
+<p>Some gameplay is shown in the next videos:</p>
+<figure><div>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="726" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ez2qX6dzj4E?feature=oembed" title="ZombiestationVR" width="1290"></iframe>
+</div></figure>
+<figure><div>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="726" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/kkqah8foAgc?feature=oembed" title="video 2022 01 25 11 10 36" width="1290"></iframe>
+</div></figure>
+</div>
