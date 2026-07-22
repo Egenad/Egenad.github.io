@@ -10,7 +10,7 @@
 	--color-link: #8ec1fc;
 	--radius: 12px;
 	--radius-sm: 8px;
-	--max-width: 1100px;
+	--max-width: 1200px;
 	--gap: 1.5rem;
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -160,7 +160,10 @@ img {
 	text-decoration: none;
 }
 
-/* Main */
+.portfolio-section,
+.about-section {
+	scroll-margin-top: 150px;
+}
 main {
 	flex: 1;
 	padding-block: 2.5rem;
@@ -194,6 +197,22 @@ main {
 	gap: var(--gap);
 }
 
+/* Wide cards: span 3 columns (rows of 2) */
+.project-grid .project-card.card-wide {
+	grid-column: span 3;
+}
+
+/* Narrow cards: span 2 columns (rows of 3) */
+.project-grid .project-card.card-narrow {
+	grid-column: span 2;
+}
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-auto-rows: 280px;
+	gap: var(--gap);
+}
+
 /* First row: 2 cards, each spans 3 columns */
 .project-grid .project-card:nth-child(1),
 .project-grid .project-card:nth-child(2) {
@@ -208,6 +227,15 @@ main {
 }
 
 /* Third row: 2 cards, each spans 3 columns */
+.project-grid .project-card:nth-child(6),
+.project-grid .project-card:nth-child(7) {
+	grid-column: span 3;
+}
+
+/* Fourth row: 1 card, spans 6 columns (full width) or 3 if you prefer half */
+.project-grid .project-card:nth-child(8) {
+	grid-column: span 3;
+}
 .project-grid .project-card:nth-child(6),
 .project-grid .project-card:nth-child(7) {
 	grid-column: span 3;
@@ -255,12 +283,19 @@ main {
 	border-radius: var(--radius);
 	overflow: hidden;
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.50);
-	transition: transform 0.2s, box-shadow 0.2s;
+	transition: transform 0.2s, box-shadow 0.2s opacity 0.3s ease;
+	opacity: 1;
 }
 
 .project-card:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.75);
+}
+
+.project-card.fade-out {
+    opacity: 0;
+    /* transform: translateY(10px); */
+	transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .card-link {
@@ -275,7 +310,7 @@ main {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 0.3s ease;
+	transition: transform 0.5s ease;
 }
 
 .project-card:hover .card-bg {
@@ -337,7 +372,52 @@ main {
 	white-space: nowrap;
 }
 
-/* Project detail */
+/* Pagination */
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.pagination-arrow {
+	background: transparent;
+	border: none;
+	color: var(--color-text);
+	font-size: 1.2rem;
+	cursor: pointer;
+	padding: 0.25rem 0.5rem;
+	transition: color 0.2s;
+}
+
+.pagination-arrow:hover {
+	color: var(--color-accent);
+}
+
+.pagination-dots {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.pagination-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: none;
+	background-color: var(--color-text-muted);
+	cursor: pointer;
+	transition: background-color 0.2s, transform 0.2s;
+}
+
+.pagination-dot.active {
+	background-color: var(--color-accent);
+	transform: scale(1.2);
+}
+
+.pagination-dot:hover {
+	background-color: var(--color-accent-hover);
+}
 .project-hero {
 	width: 100%;
 	max-height: 420px;

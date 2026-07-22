@@ -4,16 +4,17 @@ import type { Project } from '../data/projects';
 export interface Props {
 	project: Project;
 	class?: string;
+	style?: string;
 }
 
-const { project, class: className } = Astro.props;
+const { project, class: className, style } = Astro.props;
 
 const techList = project.technologies
 	? project.technologies.split(/\s*\/\s*|\s*,\s*/).filter(Boolean)
 	: [];
 ---
 
-<article class:list={['project-card', className]}>
+<article class:list={['project-card', className]} style={style}>
 	<a href={`/project/${project.slug}/`} class="card-link">
 		<img src={project.featuredImage} alt={project.title} loading="lazy" class="card-bg" />
 		<div class="card-overlay">

@@ -4,7 +4,16 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
+import { projects, getTotalPages } from '../data/projects';
+
+const totalPages = getTotalPages();
+const perPage = 7;
+
+function getCardClass(cardIndex: number): string {
+	const pos = cardIndex % perPage;
+	if (pos === 0 || pos === 1 || pos === 6) return 'card-wide';
+	return 'card-narrow';
+}
 ---
 
 <Layout title="Ángel J. Terol | Portfolio" description="Portfolio of Ángel J. Terol, game and software developer.">
@@ -13,11 +22,29 @@ import { projects } from '../data/projects';
 	<div class="container">
 		<!-- Portfolio Section -->
 		<section id="portfolio" class="portfolio-section">
-			<div class="project-grid" aria-label="Project list">
-								{projects.map((project, index) => (
-					<ProjectCard project={project} class={index === 0 || index === 1 ? 'card-wide' : index === 6 ? 'card-wide' : ''} />
-				))}
+			<div class="project-grid" aria-label="Project list" data-total-pages={totalPages}>
+				{projects.map((project, index) => {
+					const pageIndex = Math.floor(index / perPage);
+					const cardClass = getCardClass(index);
+					return (
+						<ProjectCard
+							project={project}
+							class={`project-page-${pageIndex} ${cardClass}`}
+							style={pageIndex === 0 ? '' : 'display: none;'}
+						/>
+					);
+				})}
 			</div>
+
+			{totalPages > 1 && (
+				<div class="pagination">
+					<div class="pagination-dots" id="pagination-dots">
+						{Array.from({ length: totalPages }, (_, i) => (
+							<button class={`pagination-dot ${i === 0 ? 'active' : ''}`} data-page={i} aria-label={`Page ${i + 1}`}></button>
+						))}
+					</div>
+				</div>
+			)}
 		</section>
 		<!-- About Section -->
 		<section id="about" class="about-section">
@@ -82,3 +109,64 @@ import { projects } from '../data/projects';
 
 	<Footer slot="footer" />
 </Layout>
+
+<script>
+	(function() {
+		const gridEl = document.querySelector('.project-grid') as HTMLElement | null;
+        if (!gridEl) 
+			return;
+        const grid = gridEl;
+
+		const totalPages = parseInt(grid.dataset.totalPages || '1', 10);
+		if (totalPages <= 1) 
+			return;
+
+		const dotsContainer = document.getElementById('pagination-dots');
+
+		let isTransitioning = false;
+
+		function showPage(page: number) {
+			if (isTransitioning) 
+				return;
+    		isTransitioning = true;
+
+			const cards = Array.from(grid.querySelectorAll('.project-card')) as HTMLElement[];
+    		const visibleCards = cards.filter((c) => c.style.display !== 'none');
+
+			visibleCards.forEach((el) => el.classList.add('fade-out'));
+
+			setTimeout(() => {
+				cards.forEach((el) => {
+					if (el.classList.contains('project-page-' + page)) {
+						el.style.display = '';
+					} else {
+						el.style.display = 'none';
+					}
+				});
+
+				const dots = dotsContainer?.querySelectorAll('.pagination-dot');
+				dots?.forEach((dot, idx) => {
+					dot.classList.toggle('active', idx === page);
+				});
+
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+
+				const newVisibleCards = cards.filter((c) => c.style.display !== 'none');
+				newVisibleCards.forEach((el) => el.classList.add('fade-out'));
+				
+				void grid.offsetHeight;
+				newVisibleCards.forEach((el) => el.classList.remove('fade-out'));
+
+				isTransitioning = false;
+			}, 300);
+		}
+
+		dotsContainer?.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			if (target.classList.contains('pagination-dot')) {
+				const page = parseInt(target.dataset.page || '0', 10);
+				showPage(page);
+			}
+		});
+	})();
+</script>
