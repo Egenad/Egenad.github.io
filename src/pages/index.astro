@@ -14,6 +14,37 @@ function getCardClass(cardIndex: number): string {
 	if (pos === 0 || pos === 1 || pos === 6) return 'card-wide';
 	return 'card-narrow';
 }
+
+const experiences = [
+	{
+		logo: '/images/2025/minos.png',
+		alt: 'Minos Global',
+		company: 'Minos Global',
+		period: 'Remote, 2024 - Now',
+		details: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'Docker', 'Postman', 'Sumsub'],
+	},
+	{
+		logo: '/images/2024/11/3xs.png',
+		alt: 'Systems, Servers & Solutions SL',
+		company: 'Systems, Servers & Solutions SL.',
+		period: 'Mutxamel, 2023 - 2024',
+		details: ['Java 17', 'Spring Boot', 'Redis', 'Postman', 'Proxmox', 'Jenkins'],
+	},
+	{
+		logo: '/images/2024/11/fundamentia_icon.svg',
+		alt: 'Fundamentia',
+		company: 'Fundamentia',
+		period: 'Elche/Elx, 2022 - 2023',
+		details: ['Java 8', 'Regex', 'Tomcat', 'Maven'],
+	},
+	{
+		logo: '/images/2024/11/images.png',
+		alt: 'NeoColiseumVR',
+		company: 'NeoColiseumVR',
+		period: 'Sant Joan, 2019 - 2022',
+		details: ['VR Game Programmer', 'Unreal Engine 4 / 5', 'C++ / Blueprints'],
+	},
+];
 ---
 
 <Layout title="Ángel J. Terol | Portfolio" description="Portfolio of Ángel J. Terol, game and software developer.">
@@ -49,60 +80,39 @@ function getCardClass(cardIndex: number): string {
 		<!-- About Section -->
 		<section id="about" class="about-section">
 			<header class="page-header">
-				<h1>About</h1>
+				<h1>Ángel Jesús Terol Martínez</h1>
 			</header>
 			<div class="about-layout">
 				<aside class="about-profile">
 					<img src="/images/2024/11/icon_512.png" alt="Ángel Jesús Terol" width="512" height="512" />
-					<h2>Ángel Jesús Terol Martínez</h2>
-					<SocialLinks />
 				</aside>
 
 				<div class="about-content">
 					<p class="about-bio">
-						Multimedia Engineering graduate with experience in software development, game creation, and enterprise applications. Skilled in programming with Assembly, C++, and Java, with a strong foundation in building custom solutions, including graphics engines and backend systems. Experienced in immersive technologies like VR and in developing scalable applications using frameworks such as Spring Boot. Adept at adapting to diverse challenges and delivering innovative, efficient solutions.
+						Multimedia Engineering graduate with professional experience in software development, backend systems, enterprise applications, and mobile development. Recently completed a Master's degree in Mobile Application Development, with expertise in native Android development using Kotlin. Proficient in Python, Java, C++, and Assembly, with experience building custom software, graphics engines, emulators, and scalable backend services. Familiar with frameworks such as FastAPI, Spring Boot and experienced in immersive technologies like Virtual Reality (VR). Passionate about designing efficient, maintainable, and innovative software solutions.
 					</p>
-
-					<h2>Work Experience</h2>
-					<div class="experience-list">
-						<article class="experience-item">
-							<img src="/images/2024/11/logosystems.png" alt="Systems, Servers & Solutions SL" width="682" height="382" />
-							<div>
-								<h3>Systems, Servers & Solutions SL.</h3>
-								<p class="period">Mutxamel, 2023 – 2024</p>
-								<ul>
-									<li>Java 17 Developer</li>
-									<li>Spring Boot</li>
-								</ul>
-							</div>
-						</article>
-
-						<article class="experience-item">
-							<img src="/images/2024/11/fundamentia-logo.png" alt="Fundamentia" width="504" height="60" />
-							<div>
-								<h3>Fundamentia</h3>
-								<p class="period">Elche/Elx, 2022 – 2023</p>
-								<ul>
-									<li>Java 8 Developer</li>
-									<li>Automated analysis of banking documents.</li>
-								</ul>
-							</div>
-						</article>
-
-						<article class="experience-item">
-							<img src="/images/2024/11/images.png" alt="NeoColiseumVR" width="420" height="120" />
-							<div>
-								<h3>NeoColiseumVR</h3>
-								<p class="period">Sant Joan, 2019 – 2022</p>
-								<ul>
-									<li>VR Game Programmer</li>
-									<li>Unreal Engine 4 / 5</li>
-									<li>C++ / Blueprints</li>
-								</ul>
-							</div>
-						</article>
-					</div>
+					<SocialLinks />
 				</div>
+			</div>
+			<h2>Experience</h2>
+			<div class="timeline">
+				{experiences.map((exp, index) => (
+					<div class={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+						<div class="timeline-card">
+							<img src={exp.logo} alt={exp.alt} width="80" height="80" />
+							<div class="timeline-card-body">
+								<h3>{exp.company}</h3>
+								<p class="period">{exp.period}</p>
+								<div class="timeline-tags">
+									{exp.details.map((detail) => (
+										<span class="timeline-tag">{detail}</span>
+									))}
+								</div>
+							</div>
+						</div>
+						<div class="timeline-dot" />
+					</div>
+				))}
 			</div>
 		</section>
 	</div>
@@ -153,7 +163,7 @@ function getCardClass(cardIndex: number): string {
 
 				const newVisibleCards = cards.filter((c) => c.style.display !== 'none');
 				newVisibleCards.forEach((el) => el.classList.add('fade-out'));
-				
+
 				void grid.offsetHeight;
 				newVisibleCards.forEach((el) => el.classList.remove('fade-out'));
 
