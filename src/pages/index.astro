@@ -15,36 +15,78 @@ function getCardClass(cardIndex: number): string {
 	return 'card-narrow';
 }
 
-const experiences = [
+interface TimelineItem {
+	logo: string;
+	appointment: string;
+	alt: string;
+	company: string;
+	period: string;
+	details: string[];
+}
+
+const workItems: TimelineItem[] = [
 	{
 		logo: '/images/2025/minos.png',
+		appointment: 'Python Software Developer',
 		alt: 'Minos Global',
 		company: 'Minos Global',
-		period: 'Remote, 2024 - Now',
-		details: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'Docker', 'Postman', 'Sumsub'],
+		period: 'Dic 2024 - Present',
+		details: ['FastAPI', 'PostgreSQL', 'Pydantic', 'Docker', 'Postman', 'Sumsub'],
 	},
 	{
 		logo: '/images/2024/11/3xs.png',
-		alt: 'Systems, Servers & Solutions SL',
-		company: 'Systems, Servers & Solutions SL.',
-		period: 'Mutxamel, 2023 - 2024',
-		details: ['Java 17', 'Spring Boot', 'Redis', 'Postman', 'Proxmox', 'Jenkins'],
+		alt: 'Systems, Servers & Solutions',
+		appointment: 'Java Software Developer',
+		company: 'Systems, Servers & Solutions',
+		period: 'Jun 2023 - Dic 2024',
+		details: ['Spring Boot', 'Redis', 'Postman', 'Proxmox', 'Jenkins'],
 	},
 	{
 		logo: '/images/2024/11/fundamentia_icon.svg',
 		alt: 'Fundamentia',
+		appointment: 'Java Software Developer',
 		company: 'Fundamentia',
-		period: 'Elche/Elx, 2022 - 2023',
-		details: ['Java 8', 'Regex', 'Tomcat', 'Maven'],
+		period: 'Feb 2022 - Jun 2023',
+		details: ['Regex', 'Tomcat', 'Maven', 'MySQL'],
 	},
 	{
 		logo: '/images/2024/11/images.png',
+		appointment: 'Unreal VR Game Developer',
 		alt: 'NeoColiseumVR',
 		company: 'NeoColiseumVR',
-		period: 'Sant Joan, 2019 - 2022',
-		details: ['VR Game Programmer', 'Unreal Engine 4 / 5', 'C++ / Blueprints'],
+		period: 'Dec 2019 - Feb 2022',
+		details: ['Unreal Engine 5', 'C++'],
 	},
 ];
+
+const studyItems: TimelineItem[] = [
+	{
+		logo: '/images/2024/11/uoc.png',
+		alt: 'Universitat Oberta de Catalunya',
+		appointment: "Master's in Mobile Application Development",
+		company: 'Universidad de Alicante (UA)',
+		period: 'Sept 2023 - Jun 2025',
+		details: ['Android', 'Kotlin', 'iOS', 'Flutter'],
+	},
+	{
+		logo: '/images/2024/11/ua.png',
+		alt: 'Universidad de Alicante',
+		appointment: "Bachelor's in Multimedia Engineering",
+		company: 'Universidad de Alicante (UA)',
+		period: 'Sept 2015 - Jun 2019',
+		details: ['C++', 'OpenGL', 'Unity', 'Unreal Engine', 'VR/AR'],
+	},
+];
+
+// Interleave: work[0], study[0], work[1], work[2], work[3], study[1]
+const maxRows = Math.max(workItems.length, studyItems.length);
+const timelineRows: { work?: TimelineItem; study?: TimelineItem }[] = [];
+for (let i = 0; i < maxRows; i++) {
+	const row: { work?: TimelineItem; study?: TimelineItem } = {};
+	if (workItems[i]) row.work = workItems[i];
+	if (studyItems[i]) row.study = studyItems[i];
+	timelineRows.push(row);
+}
 ---
 
 <Layout title="Ángel J. Terol | Portfolio" description="Portfolio of Ángel J. Terol, game and software developer.">
@@ -96,21 +138,44 @@ const experiences = [
 			</div>
 			<h2>Experience</h2>
 			<div class="timeline">
-				{experiences.map((exp, index) => (
-					<div class={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-						<div class="timeline-card">
-							<img src={exp.logo} alt={exp.alt} width="80" height="80" />
-							<div class="timeline-card-body">
-								<h3>{exp.company}</h3>
-								<p class="period">{exp.period}</p>
-								<div class="timeline-tags">
-									{exp.details.map((detail) => (
-										<span class="timeline-tag">{detail}</span>
-									))}
+				{timelineRows.map((row) => (
+					<div class="timeline-row">
+						{row.work && (
+							<div class="timeline-item left">
+								<div class="timeline-card">
+									<img src={row.work.logo} alt={row.work.alt} width="80" height="80" />
+									<div class="timeline-card-body">
+										<p class="period">{row.work.period}</p>
+										<h3>{row.work.appointment}</h3>
+										<h4>{row.work.company}</h4>
+										<div class="timeline-tags">
+											{row.work.details.map((detail) => (
+												<span class="timeline-tag">{detail}</span>
+											))}
+										</div>
+									</div>
 								</div>
+								<div class="timeline-dot" />
 							</div>
-						</div>
-						<div class="timeline-dot" />
+						)}
+						{row.study && (
+							<div class="timeline-item right">
+								<div class="timeline-card">
+									<img src={row.study.logo} alt={row.study.alt} width="80" height="80" />
+									<div class="timeline-card-body">
+										<p class="period">{row.study.period}</p>
+										<h3>{row.study.appointment}</h3>
+										<h4>{row.study.company}</h4>
+										<div class="timeline-tags">
+											{row.study.details.map((detail) => (
+												<span class="timeline-tag">{detail}</span>
+											))}
+										</div>
+									</div>
+								</div>
+								<div class="timeline-dot" />
+							</div>
+						)}
 					</div>
 				))}
 			</div>

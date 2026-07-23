@@ -555,10 +555,21 @@ main {
 	border-radius: 3px;
 }
 
+.timeline-row {
+	position: relative;
+	width: 100%;
+	margin-bottom: 2rem;
+	min-height: 1px;
+}
+
+.timeline-row:last-child {
+	margin-bottom: 0;
+}
+
 .timeline-item {
 	position: relative;
 	width: 50%;
-	padding: 1rem 2rem;
+	padding: 0 2rem;
 	box-sizing: border-box;
 }
 
@@ -627,10 +638,16 @@ main {
 	margin-bottom: 0.25rem;
 }
 
+.timeline-card-body h4 {
+	font-size: 0.9rem;
+	color: var(--color-text-muted);
+	margin-bottom: 0.25rem;
+}
+
 .timeline-card-body .period {
 	color: var(--color-accent-hover);
 	font-size: 0.85rem;
-	font-style: italic;
+	font-weight: bold;
 	margin-bottom: 0.5rem;
 }
 
@@ -660,6 +677,10 @@ main {
 		left: 20px;
 	}
 
+	.timeline-row {
+		margin-bottom: 1rem;
+	}
+
 	.timeline-item,
 	.timeline-item.left,
 	.timeline-item.right {
@@ -668,6 +689,7 @@ main {
 		padding-left: 50px;
 		padding-right: 0;
 		text-align: left;
+		margin-bottom: 1rem;
 	}
 
 	.timeline-item.left .timeline-dot,
@@ -680,51 +702,6 @@ main {
 		width: 100%;
 	}
 }
-
-/* Footer */
-/* Footer */
-.site-footer {
-	background-color: var(--color-surface);
-	border-top: 1px solid var(--color-surface-elevated);
-	padding-block: 1.5rem;
-	margin-top: auto;
-}
-
-.footer-inner {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
-}
-
-.social-links {
-	display: flex;
-	gap: 1rem;
-}
-
-.social-links a {
-	display: inline-flex;
-	color: var(--color-text);
-	transition: color 0.2s, transform 0.2s;
-}
-
-.social-links a:hover {
-	color: var(--color-accent);
-	transform: translateY(-2px);
-}
-
-.social-links svg {
-	width: 22px;
-	height: 22px;
-	fill: currentColor;
-}
-
-.copyright {
-	color: var(--color-text-muted);
-	font-size: 0.9rem;
-}
-
-/* Responsive */
 @media (max-width: 640px) {
 	.header-inner {
 		flex-wrap: wrap;
@@ -738,4 +715,40 @@ main {
 		padding: 0.4rem 1rem;
 		font-size: 0.85rem;
 	}
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-surface-elevated);
+  padding-block: 1.5rem;
+  margin-top: auto;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+.social-links a {
+  display: inline-flex;
+  color: var(--color-text);
+  transition: color 0.2s, transform 0.2s;
+}
+.social-links a:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.social-links svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.copyright {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
 }
