@@ -1,0 +1,524 @@
+---
+// Componente reutilizable:
+// - Detecta grupos de <img> consecutivas dentro de `.project-content`.
+// - 3 o más imágenes -> carrusel "coverflow": una foto centrada y grande,
+//   con la anterior y la siguiente asomando parcialmente a los lados.
+//   Click en una lateral -> se desliza el carrusel. Click en la central ->
+//   se abre el lightbox a pantalla completa.
+// - Exactamente 2 imágenes -> se muestran ambas en fila, sin efecto peek.
+// - También hace responsive los <iframe> (YouTube, etc.) que encuentre.
+//
+// Uso: importar y colocar <Lightbox /> una vez en cualquier página que
+// renderice HTML vía set:html dentro de un elemento con clase .project-content.
+---
+
+<style is:global>
+  /* ---------------------------------------------------------------- */
+  /* Carrusel "coverflow" (3+ imágenes seguidas)                       */
+  /* ---------------------------------------------------------------- */
+  .project-content .img-gallery {
+    margin: 2rem 0;
+  }
+
+  .project-content .gallery-carousel {
+    position: relative;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    
+  }
+
+  .project-content .gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-content .gallery-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 58%;
+    height: 86%;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.4s ease, filter 0.4s ease;
+  }
+
+  .project-content .gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+    cursor: inherit;
+  }
+
+  .project-content .gallery-slide[data-role='current'] {
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 3;
+    opacity: 1;
+    filter: none;
+    cursor: zoom-in;
+  }
+  .project-content .gallery-slide[data-role='prev'] {
+    transform: translate(-94%, -50%) scale(0.8) rotate(-4deg);
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0.75);
+  }
+  .project-content .gallery-slide[data-role='next'] {
+    transform: translate(-6%, -50%) scale(0.8) rotate(4deg);
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0.75);
+  }
+  .project-content .gallery-slide[data-role='prev']:hover,
+  .project-content .gallery-slide[data-role='next']:hover {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+  .project-content .gallery-slide[data-role='hidden'] {
+    transform: translate(-50%, -50%) scale(0.55);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .project-content .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+  }
+  .project-content .gallery-arrow:hover {
+    background: rgba(0, 0, 0, 0.65);
+  }
+  .project-content .gallery-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
+  .project-content .gallery-arrow.prev {
+    left: 0.75rem;
+  }
+  .project-content .gallery-arrow.next {
+    right: 0.75rem;
+  }
+
+  .project-content .gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+  .project-content .gallery-dots .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: var(--color-chip-border, #94a3b8);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .project-content .gallery-dots .dot.is-active {
+    background: var(--color-accent, #d97757);
+    transform: scale(1.25);
+  }
+
+  @media (max-width: 640px) {
+    .project-content .gallery-carousel {
+      height: 220px;
+    }
+    .project-content .gallery-slide {
+      width: 72%;
+    }
+    .project-content .gallery-slide[data-role='prev'] {
+      transform: translate(-88%, -50%) scale(0.78) rotate(-4deg);
+    }
+    .project-content .gallery-slide[data-role='next'] {
+      transform: translate(-12%, -50%) scale(0.78) rotate(4deg);
+    }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Grupo de exactamente 2 imágenes: fila simple, sin efecto peek     */
+  /* ---------------------------------------------------------------- */
+  .project-content .img-gallery-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .project-content .img-gallery-duo img {
+    margin: 0;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  .project-content .img-gallery-duo img:hover {
+    transform: scale(1.02);
+    filter: brightness(0.94);
+  }
+  @media (max-width: 640px) {
+    .project-content .img-gallery-duo img {
+      height: 180px;
+    }
+  }
+
+  /* Imágenes sueltas fuera de cualquier grupo */
+  .project-content img.lightbox-enabled {
+    cursor: zoom-in;
+  }
+
+  /* Embeds de vídeo (YouTube, etc.) responsive */
+  .project-content .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .project-content .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Lightbox a pantalla completa                                      */
+  /* ---------------------------------------------------------------- */
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 12, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .lightbox-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-figure {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .lightbox-figure img {
+    max-width: 90vw;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+  .lightbox-counter {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .lightbox-close,
+  .lightbox-nav {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .lightbox-close {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+  .lightbox-nav.prev {
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lightbox-nav.next {
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 640px) {
+    .lightbox-nav,
+    .lightbox-close {
+      width: 38px;
+      height: 38px;
+    }
+  }
+</style>
+
+<script>
+  // Todo este script mejora el HTML que llega por set:html (project.content)
+  // después de que se haya pintado en el DOM. No depende de nada externo.
+
+  function setup(): void {
+    const content = document.querySelector<HTMLElement>('.project-content');
+    if (!content) return;
+
+    // 1) Envolver iframes (YouTube, etc.) para que sean responsive
+    const iframes = Array.from(content.querySelectorAll<HTMLIFrameElement>('iframe'));
+    iframes.forEach((iframe: HTMLIFrameElement) => {
+      if (iframe.closest('.video-embed')) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'video-embed';
+      iframe.removeAttribute('width');
+      iframe.removeAttribute('height');
+      iframe.parentNode?.insertBefore(wrapper, iframe);
+      wrapper.appendChild(iframe);
+    });
+
+    // `allImages` se rellena más abajo, pero se declara ya porque las
+    // funciones de clic de las galerías (definidas en el paso 2) la
+    // necesitan por referencia (closure), no por valor.
+    let allImages: HTMLImageElement[] = [];
+
+    function openImageGlobally(img: HTMLImageElement): void {
+      const idx = allImages.indexOf(img);
+      if (idx !== -1) openLightbox(idx);
+    }
+
+    // 2) Detectar contenedores con varias <img> seguidas y convertirlos
+    //    en galería (coverflow si son 3+, fila simple si son exactamente 2)
+    const candidates = Array.from(content.querySelectorAll<HTMLElement>('div, p'));
+    candidates.forEach((el: HTMLElement) => {
+      const directImgs = Array.from(el.children).filter(
+        (c: Element): c is HTMLImageElement => c.tagName === 'IMG'
+      );
+      if (directImgs.length < 2) return;
+
+      el.classList.add('img-gallery');
+
+      if (directImgs.length === 2) {
+        el.classList.add('img-gallery-duo');
+        directImgs.forEach((img) => img.classList.add('lightbox-enabled'));
+        return;
+      }
+
+      buildCoverflow(el, directImgs);
+    });
+
+    function buildCoverflow(container: HTMLElement, imgs: HTMLImageElement[]): void {
+      const carousel = document.createElement('div');
+      carousel.className = 'gallery-carousel';
+
+      const track = document.createElement('div');
+      track.className = 'gallery-track';
+
+      const slides = imgs.map((img) => {
+        const slide = document.createElement('div');
+        slide.className = 'gallery-slide';
+        slide.appendChild(img); // mueve el <img> original, no lo clona
+        track.appendChild(slide);
+        return slide;
+      });
+
+      const prevArrow = document.createElement('button');
+      prevArrow.className = 'gallery-arrow prev';
+      prevArrow.setAttribute('aria-label', 'Foto anterior');
+      prevArrow.innerHTML =
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+
+      const nextArrow = document.createElement('button');
+      nextArrow.className = 'gallery-arrow next';
+      nextArrow.setAttribute('aria-label', 'Foto siguiente');
+      nextArrow.innerHTML =
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+
+      const dotsWrap = document.createElement('div');
+      dotsWrap.className = 'gallery-dots';
+      const dots = imgs.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', `Ir a la foto ${i + 1}`);
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      carousel.append(track, prevArrow, nextArrow);
+      container.replaceChildren(carousel, dotsWrap);
+
+      // Empieza mostrando una imagen "del medio" para que ya se vea
+      // el efecto centro + laterales desde el primer render.
+      let currentIndex = Math.floor((imgs.length - 1) / 2);
+
+      function render(): void {
+        slides.forEach((slide, i) => {
+          const diff = i - currentIndex;
+          const role =
+            diff === 0 ? 'current' : diff === -1 ? 'prev' : diff === 1 ? 'next' : 'hidden';
+          slide.dataset.role = role;
+        });
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === currentIndex));
+        prevArrow.disabled = currentIndex === 0;
+        nextArrow.disabled = currentIndex === slides.length - 1;
+      }
+
+      function goTo(index: number): void {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+        render();
+      }
+
+      prevArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goTo(currentIndex - 1);
+      });
+      nextArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goTo(currentIndex + 1);
+      });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      track.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const slide = target.closest('.gallery-slide') as HTMLDivElement | null;
+        if (!slide) return;
+        const index = slides.indexOf(slide);
+        if (slide.dataset.role === 'current') {
+          openImageGlobally(imgs[index]);
+        } else {
+          goTo(index);
+        }
+      });
+
+      render();
+    }
+
+    // 3) Todas las imágenes del artículo (ya reubicadas dentro de sus
+    //    galerías si tocaba) forman la colección para el lightbox.
+    allImages = Array.from(content.querySelectorAll<HTMLImageElement>('img'));
+    if (allImages.length === 0) return;
+
+    allImages.forEach((img: HTMLImageElement) => {
+      if (!img.closest('.gallery-slide')) img.classList.add('lightbox-enabled');
+    });
+
+    // Imágenes sueltas (no dentro de una galería): abren el lightbox directamente
+    allImages.forEach((img: HTMLImageElement) => {
+      if (img.closest('.gallery-slide') || img.closest('.img-gallery-duo')) return;
+      img.addEventListener('click', () => openImageGlobally(img));
+    });
+    content.querySelectorAll<HTMLImageElement>('.img-gallery-duo img').forEach((img) => {
+      img.addEventListener('click', () => openImageGlobally(img));
+    });
+
+    // 4) Construir el lightbox una sola vez
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = `
+      <button class="lightbox-close" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <button class="lightbox-nav prev" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="lightbox-nav next" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <figure class="lightbox-figure">
+        <img src="" alt="" />
+        <span class="lightbox-counter"></span>
+      </figure>
+    `;
+    document.body.appendChild(overlay);
+
+    const imgEl = overlay.querySelector<HTMLImageElement>('img');
+    const counterEl = overlay.querySelector<HTMLElement>('.lightbox-counter');
+    const closeBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-close');
+    const prevBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.prev');
+    const nextBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.next');
+
+    // Si por lo que sea no se encuentra alguno de los nodos, abortamos aquí.
+    // A partir de este punto TypeScript ya sabe que ninguno es null.
+    if (!imgEl || !counterEl || !closeBtn || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+
+    function show(index: number): void {
+      currentIndex = (index + allImages.length) % allImages.length;
+      const source = allImages[currentIndex];
+      // Non-null: ya comprobado más arriba; TS no propaga ese narrowing
+      // dentro de funciones anidadas definidas para ejecutarse más tarde.
+      imgEl!.src = source.currentSrc || source.src;
+      imgEl!.alt = source.alt || '';
+      counterEl!.textContent =
+        allImages.length > 1 ? `${currentIndex + 1} / ${allImages.length}` : '';
+      const multiple = allImages.length > 1;
+      prevBtn!.style.display = multiple ? 'flex' : 'none';
+      nextBtn!.style.display = multiple ? 'flex' : 'none';
+    }
+
+    function openLightbox(index: number): void {
+      show(index);
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close(): void {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', close);
+    nextBtn.addEventListener('click', () => show(currentIndex + 1));
+    prevBtn.addEventListener('click', () => show(currentIndex - 1));
+
+    overlay.addEventListener('click', (e: MouseEvent) => {
+      if (e.target === overlay) close();
+    });
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') show(currentIndex + 1);
+      if (e.key === 'ArrowLeft') show(currentIndex - 1);
+    });
+  }
+
+  // Astro View Transitions (astro:page-load) o carga normal (DOMContentLoaded)
+  document.addEventListener('astro:page-load', setup);
+  if (document.readyState !== 'loading') {
+    setup();
+  } else {
+    document.addEventListener('DOMContentLoaded', setup);
+  }
+</script>

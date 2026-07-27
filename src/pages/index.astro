@@ -4,7 +4,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
 import { projects, getTotalPages } from '../data/projects';
+import { workItems, studyItems } from '../data/experiences';
 
 const totalPages = getTotalPages();
 const perPage = 7;
@@ -15,78 +17,6 @@ function getCardClass(cardIndex: number): string {
 	return 'card-narrow';
 }
 
-interface TimelineItem {
-	logo: string;
-	appointment: string;
-	alt: string;
-	company: string;
-	period: string;
-	details: string[];
-}
-
-const workItems: TimelineItem[] = [
-	{
-		logo: '/images/2025/minos.png',
-		appointment: 'Python Software Developer',
-		alt: 'Minos Global',
-		company: 'Minos Global',
-		period: 'Dic 2024 - Present',
-		details: ['FastAPI', 'PostgreSQL', 'Pydantic', 'Docker', 'Postman', 'Sumsub'],
-	},
-	{
-		logo: '/images/2024/11/3xs.png',
-		alt: 'Systems, Servers & Solutions',
-		appointment: 'Java Software Developer',
-		company: 'Systems, Servers & Solutions',
-		period: 'Jun 2023 - Dic 2024',
-		details: ['Spring Boot', 'Redis', 'Postman', 'Proxmox', 'Jenkins'],
-	},
-	{
-		logo: '/images/2024/11/fundamentia_icon.svg',
-		alt: 'Fundamentia',
-		appointment: 'Java Software Developer',
-		company: 'Fundamentia',
-		period: 'Feb 2022 - Jun 2023',
-		details: ['Regex', 'Tomcat', 'Maven', 'MySQL'],
-	},
-	{
-		logo: '/images/2024/11/images.png',
-		appointment: 'Unreal VR Game Developer',
-		alt: 'NeoColiseumVR',
-		company: 'NeoColiseumVR',
-		period: 'Dec 2019 - Feb 2022',
-		details: ['Unreal Engine 5', 'C++'],
-	},
-];
-
-const studyItems: TimelineItem[] = [
-	{
-		logo: '/images/2024/11/uoc.png',
-		alt: 'Universitat Oberta de Catalunya',
-		appointment: "Master's in Mobile Application Development",
-		company: 'Universidad de Alicante (UA)',
-		period: 'Sept 2023 - Jun 2025',
-		details: ['Android', 'Kotlin', 'iOS', 'Flutter'],
-	},
-	{
-		logo: '/images/2024/11/ua.png',
-		alt: 'Universidad de Alicante',
-		appointment: "Bachelor's in Multimedia Engineering",
-		company: 'Universidad de Alicante (UA)',
-		period: 'Sept 2015 - Jun 2019',
-		details: ['C++', 'OpenGL', 'Unity', 'Unreal Engine', 'VR/AR'],
-	},
-];
-
-// Interleave: work[0], study[0], work[1], work[2], work[3], study[1]
-const maxRows = Math.max(workItems.length, studyItems.length);
-const timelineRows: { work?: TimelineItem; study?: TimelineItem }[] = [];
-for (let i = 0; i < maxRows; i++) {
-	const row: { work?: TimelineItem; study?: TimelineItem } = {};
-	if (workItems[i]) row.work = workItems[i];
-	if (studyItems[i]) row.study = studyItems[i];
-	timelineRows.push(row);
-}
 ---
 
 <Layout title="Ángel J. Terol | Portfolio" description="Portfolio of Ángel J. Terol, game and software developer.">
@@ -131,53 +61,23 @@ for (let i = 0; i < maxRows; i++) {
 
 				<div class="about-content">
 					<p class="about-bio">
-						Multimedia Engineering graduate with professional experience in software development, backend systems, enterprise applications, and mobile development. Recently completed a Master's degree in Mobile Application Development, with expertise in native Android development using Kotlin. Proficient in Python, Java, C++, and Assembly, with experience building custom software, graphics engines, emulators, and scalable backend services. Familiar with frameworks such as FastAPI, Spring Boot and experienced in immersive technologies like Virtual Reality (VR). Passionate about designing efficient, maintainable, and innovative software solutions.
+						Software Engineer with experience in backend development, enterprise applications, mobile development, and financial software. Recently completed a Master's degree in Mobile Application Development, specializing in native Android development with Kotlin. Proficient in Python, Java, C++, and Assembly, with hands-on experience developing scalable backend services, custom software, graphics engines, and emulators. Experienced with FastAPI, Spring Boot, and Virtual Reality (VR) technologies. Passionate about building efficient, maintainable, and high-quality software.	
 					</p>
 					<SocialLinks />
 				</div>
 			</div>
-			<h2>Experience</h2>
-			<div class="timeline">
-				{timelineRows.map((row) => (
-					<div class="timeline-row">
-						{row.work && (
-							<div class="timeline-item left">
-								<div class="timeline-card">
-									<img src={row.work.logo} alt={row.work.alt} width="80" height="80" />
-									<div class="timeline-card-body">
-										<p class="period">{row.work.period}</p>
-										<h3>{row.work.appointment}</h3>
-										<h4>{row.work.company}</h4>
-										<div class="timeline-tags">
-											{row.work.details.map((detail) => (
-												<span class="timeline-tag">{detail}</span>
-											))}
-										</div>
-									</div>
-								</div>
-								<div class="timeline-dot" />
-							</div>
-						)}
-						{row.study && (
-							<div class="timeline-item right">
-								<div class="timeline-card">
-									<img src={row.study.logo} alt={row.study.alt} width="80" height="80" />
-									<div class="timeline-card-body">
-										<p class="period">{row.study.period}</p>
-										<h3>{row.study.appointment}</h3>
-										<h4>{row.study.company}</h4>
-										<div class="timeline-tags">
-											{row.study.details.map((detail) => (
-												<span class="timeline-tag">{detail}</span>
-											))}
-										</div>
-									</div>
-								</div>
-								<div class="timeline-dot" />
-							</div>
-						)}
-					</div>
-				))}
+			<h2>Resume</h2>
+			<div class="experience-grid">
+				<div class="experience-column">
+					{workItems.map((item) => (
+						<ExperienceCard item={item} />
+					))}
+				</div>
+				<div class="experience-column">
+					{studyItems.map((item) => (
+						<ExperienceCard item={item} />
+					))}
+				</div>
 			</div>
 		</section>
 	</div>

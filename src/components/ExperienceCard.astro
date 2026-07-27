@@ -1,0 +1,23 @@
+---
+import type { ExperienceItem } from '../data/experiences';
+
+interface Props {
+	item: ExperienceItem;
+}
+
+const { item } = Astro.props;
+---
+
+<div class="experience-card">
+	<img src={item.logo} alt={item.alt} width="80" height="80" />
+	<div class="experience-card-body">
+		<p class="period">{item.period}</p>
+		<h4>{item.appointment}</h4>
+		<h5>{item.company}</h5>
+		<div class="experience-tags">
+			{item.details.map((detail) => (
+				<span class="experience-tag">{detail}</span>
+			))}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+[
+    {
+		"logo": "/images/2025/minos.png",
+		"appointment": "Python Software Developer",
+		"alt": "Minos Global",
+		"company": "Minos Global",
+		"period": "Dic 2024 - Present",
+		"details": ["FastAPI", "PostgreSQL", "Pydantic", "Docker", "Postman", "Sumsub", "Web3", "CCXT"],
+        "type": 1
+	},
+	{
+		"logo": "/images/2024/11/3xs.png",
+		"alt": "Systems, Servers & Solutions",
+		"appointment": "Java Software Developer",
+		"company": "Systems, Servers & Solutions",
+		"period": "Jun 2023 - Dic 2024",
+		"details": ["Spring Boot", "Redis", "Postman", "Proxmox", "Jenkins"],
+        "type": 1
+	},
+	{
+		"logo": "/images/2024/11/fundamentia_icon.svg",
+		"alt": "Fundamentia",
+		"appointment": "Java Software Developer",
+		"company": "Fundamentia",
+		"period": "Feb 2022 - Jun 2023",
+		"details": ["Regex", "Tomcat", "Maven", "MySQL"],
+        "type": 1
+	},
+	{
+		"logo": "/images/2024/11/images.png",
+		"appointment": "Unreal VR Game Developer",
+		"alt": "NeoColiseumVR",
+		"company": "NeoColiseumVR",
+		"period": "Dec 2019 - Feb 2022",
+		"details": ["Unreal Engine 5", "C++"],
+        "type": 1
+	},
+    {
+		"logo": "/images/2025/ua_logo.jpeg",
+		"alt": "Universitat Oberta de Catalunya",
+		"appointment": "Master's in Mobile Application Development",
+		"company": "University of Alicante (UA)",
+		"period": "Sept 2023 - Jun 2025",
+		"details": ["Android", "Kotlin", "iOS", "Flutter"],
+        "type": 0
+	},
+	{
+		"logo": "/images/2025/ua_logo.jpeg",
+		"alt": "Universidad de Alicante",
+		"appointment": "Bachelor's in Multimedia Engineering",
+		"company": "University of Alicante (UA)",
+		"period": "Sept 2015 - Jun 2019",
+		"details": ["C++", "OpenGL", "Unity", "Unreal Engine", "VR/AR"],
+        "type": 0
+	}
+]
