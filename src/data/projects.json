@@ -25,10 +25,12 @@
     "github": "https://github.com/Egenad/GoldenSacraUnity",
     "category": "Personal",
     "gallery": [
-      { "src": "/images/2024/11/HighresScreenshot00001-copia.png", "type": "image" },
-      { "src": "/images/2024/11/golden-sacra-1.png", "type": "image" },
+      { "src": "/images/2025/golden_sacra_logo.PNG", "type": "image" },
       { "src": "/images/2025/character_design.png", "type": "image" },
-      { "src": "/images/2025/golden_sacra_logo.PNG", "type": "image" }
+      { "src": "/images/2024/11/HighresScreenshot00001-copia.png", "type": "image" },
+      { "src": "/images/2025/golden-sacra-1.png", "type": "image" },
+      { "src": "/images/2025/golden-sacra-2.png", "type": "image" },
+      { "src": "/images/2025/golden-sacra-3.png", "type": "image" }
     ],
     "excerpt": "This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the ha..."
   },
