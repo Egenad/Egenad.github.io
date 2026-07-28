@@ -6,15 +6,23 @@
     "featuredImage": "/images/2025/gbee_logo.png",
     "technologies": "Kotlin / Android Studio",
     "github": "https://github.com/Egenad/GBee",
+    "category": "Personal",
+    "gallery": [
+      "/images/2025/gbee_logo.png"
+    ],
     "excerpt": "GBee is an application that functions as a Game Boy emulator, developed natively for Android devices using the Kotlin programming language and Android Studio as its development environment. It is structured into modules that reflect the essential components of the original Game Boy's architecture."
   },
   {
     "slug": "golden-sacra-remake",
-    "title": "Golden Sacra – Remake",
-    "year": "2024",
+    "title": "Golden Sacra",
+    "year": "2025",
     "featuredImage": "/images/2024/11/HighresScreenshot00001-copia.png",
-    "technologies": "Unreal Engine 5 / C++ / Blueprints",
+    "technologies": "Unity / C#",
     "github": "https://github.com/Egenad/DCrawler",
+    "category": "Personal",
+    "gallery": [
+      "/images/2024/11/HighresScreenshot00001-copia.png"
+    ],
     "excerpt": "This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the ha..."
   },
   {
@@ -24,6 +32,16 @@
     "featuredImage": "/images/2024/11/1920-1080-max.png",
     "technologies": "Unreal Engine 4 / C++ / Blueprints",
     "github": "",
+    "category": "Professional",
+    "gallery": [
+      "/images/2024/11/photo_2021-08-30_13-34-37.jpg",
+      "/images/2024/11/1920-1080-max.png",
+      "/images/2024/11/2016-1024-1.png",
+      "/images/2024/11/photo_2021-12-15_23-37-55.jpg",
+      "/images/2024/11/4096-2304-max-1.png",
+      "/images/2024/11/photo_2021-12-15_23-37-53.jpg",
+      "/images/2024/11/photo_2021-12-15_23-37-56.jpg"
+    ],
     "excerpt": "ZombieStation is a VR game made withUnreal Enginefor theNeo Coliseum Immersive Reality SL. It's main goal is to make the player experience an hybrid between the..."
   },
   {
@@ -33,15 +51,29 @@
     "featuredImage": "/images/2024/11/EFtBgptXUAAL4VI.jpg",
     "technologies": "C#, Unity, Photoshop",
     "github": "https://github.com/albertik97/GameJam2019",
+    "category": "Personal",
+    "gallery": [
+      "/images/2024/11/EFtBgprX0AAqpDI.jpg",
+      "/images/2024/11/EFtBgptXUAAL4VI-1.jpg",
+      "/images/2024/11/EFtBgptWwAAkn2l.jpg",
+      "/images/2024/11/EFtBgp1WsAAJsxY.jpg"
+    ],
     "excerpt": "Dizzy Mouseis a 2-players minigame where each one is a little rat. Thegoalof the game isto get where the cheese is, butthe controls changes every 5 seconds, so ..."
   },
   {
     "slug": "golden-sacra",
-    "title": "Golden Sacra",
+    "title": "Golden Sacra (GB)",
     "year": "2024",
     "featuredImage": "/images/2024/11/titlescreen.png",
     "technologies": "Z80 language, RGBDS, GBTD, GBMB",
     "github": "",
+    "category": "Academic",
+    "gallery": [
+      "/images/2024/11/Sin-titulo.png",
+      "/images/2024/11/Sin-titulo2.png",
+      "/images/2024/11/Sin-titulo3.png",
+      "/images/2024/11/Sin-titulo4.png"
+    ],
     "excerpt": "Golden Sacra is an adventure, RPG or nethack game, for the original Game Boy, which is influenced by titles such asPokémon Mystery DungeonorShiren the Wanderer...."
   },
   {
@@ -51,6 +83,16 @@
     "featuredImage": "/images/2020/05/D7PkuaNX4AEJVaE.jpg",
     "technologies": "C++, OpenGL, GLSL, Bullet Physics, FMod API",
     "github": "https://github.com/Egenad/FrostylandABP",
+    "category": "Academic",
+    "gallery": [
+      "/images/2020/05/D7PkTdLXoAIQVPN.jpg",
+      "/images/2020/05/D7PkZTmWsAY3jc9.jpg",
+      "/images/2020/05/D1eYzq4WkAIhLGf.jpg",
+      "/images/2020/05/D6JQeikWwAAEuez.jpg",
+      "/images/2020/05/D7PkuaNX4AEJVaE.jpg",
+      "/images/2020/05/D1N7VwQX4AAMnAT.jpg",
+      "/images/2020/05/D7rWv8DWsAAVxf9.jpg"
+    ],
     "excerpt": "Frostylandis anRPG,action-adventuregame where its protagonist must save the kingdom of the evil penguins, who have conquered it, facing differentpuzzles and obs..."
   },
   {
@@ -60,6 +102,13 @@
     "featuredImage": "/images/2024/11/redsea_game.png",
     "technologies": "Z80 Language, CPCTelera",
     "github": "https://github.com/Egenad/Redsea",
+    "category": "Academic",
+    "gallery": [
+      "/images/2019/09/Sin-titulo45.png",
+      "/images/2019/09/DqxirJrW4AA8Z-u.jpg",
+      "/images/2019/09/Captura-de-pantalla-2024-11-26-180522.png",
+      "/images/2019/09/DqxiqoPWoAAGknR.jpg"
+    ],
     "excerpt": "At the start of the academic year the first thing our teacher said was \"If you want to program as professionals you have to know how the machine works inside\", ..."
   },
   {
@@ -69,6 +118,10 @@
     "featuredImage": "/images/2024/11/Captura-1.png",
     "technologies": "C++, SFML",
     "github": "https://github.com/Egenad/ApolloX",
+    "category": "Academic",
+    "gallery": [
+      "/images/2024/11/Captura-1.png"
+    ],
     "excerpt": "Note: graphics and audio are not of our own."
   }
 ]

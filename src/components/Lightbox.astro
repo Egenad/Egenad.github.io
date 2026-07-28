@@ -188,6 +188,11 @@
     cursor: zoom-in;
   }
 
+  /* Hero gallery images also zoomable */
+  .hero-gallery-slide[data-role='current'] img {
+    cursor: zoom-in;
+  }
+
   /* Embeds de vídeo (YouTube, etc.) responsive */
   .project-content .video-embed {
     position: relative;
@@ -294,6 +299,13 @@
   function setup(): void {
     const content = document.querySelector<HTMLElement>('.project-content');
     if (!content) return;
+
+    // 0) Incluir imágenes del hero gallery en la colección del lightbox
+    const heroGallery = document.querySelector<HTMLElement>('[data-hero-gallery]');
+    let heroImages: HTMLImageElement[] = [];
+    if (heroGallery) {
+      heroImages = Array.from(heroGallery.querySelectorAll<HTMLImageElement>('img'));
+    }
 
     // 1) Envolver iframes (YouTube, etc.) para que sean responsive
     const iframes = Array.from(content.querySelectorAll<HTMLIFrameElement>('iframe'));
@@ -424,8 +436,8 @@
     }
 
     // 3) Todas las imágenes del artículo (ya reubicadas dentro de sus
-    //    galerías si tocaba) forman la colección para el lightbox.
-    allImages = Array.from(content.querySelectorAll<HTMLImageElement>('img'));
+    //    galerías si tocaba) más las del hero gallery forman la colección.
+    allImages = heroImages.concat(Array.from(content.querySelectorAll<HTMLImageElement>('img')));
     if (allImages.length === 0) return;
 
     allImages.forEach((img: HTMLImageElement) => {
@@ -438,6 +450,11 @@
       img.addEventListener('click', () => openImageGlobally(img));
     });
     content.querySelectorAll<HTMLImageElement>('.img-gallery-duo img').forEach((img) => {
+      img.addEventListener('click', () => openImageGlobally(img));
+    });
+
+    // Hero gallery: click en imagen central abre lightbox
+    heroImages.forEach((img) => {
       img.addEventListener('click', () => openImageGlobally(img));
     });
 

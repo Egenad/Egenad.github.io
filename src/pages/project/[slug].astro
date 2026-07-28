@@ -14,10 +14,13 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 
+const gallery = project.gallery ?? [project.featuredImage];
+const hasGallery = gallery.length > 1;
+
 // "C++, CPCTelera" -> ["C++", "CPCTelera"]
 const techList = project.technologies
-  ? project.technologies.split(',').map((t) => t.trim()).filter(Boolean)
-  : [];
+	? project.technologies.split(/\s*\/\s*|\s*,\s*/).filter(Boolean)
+	: [];
 ---
 
 <Layout title={`${project.title} | Ángel J. Terol`} description={project.excerpt}>
@@ -30,14 +33,34 @@ const techList = project.technologies
     </a>
 
     <article class="project-detail">
-      <header class="project-hero-wrap">
-        <img src={project.featuredImage} alt={project.title} class="project-hero" />
-        
-      </header>
-
       <div class="project-header">
         <h1>{project.title}</h1>
-
+      </div>
+      <header class="project-hero-wrap">
+        {hasGallery ? (
+          <div class="hero-gallery-cover" data-hero-gallery>
+            <div class="hero-gallery-track">
+              {gallery.map((src, i) => (
+                <div class="hero-gallery-slide" data-hero-slide={i}>
+                  <img src={src} alt={`${project.title} screenshot ${i + 1}`} />
+                </div>
+              ))}
+            </div>
+            <button class="gallery-arrow prev" aria-label="Foto anterior">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="gallery-arrow next" aria-label="Foto siguiente">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="gallery-dots">
+              {gallery.map((_, i) => (
+                <button class="dot" data-hero-dot={i} aria-label={`Ir a la foto ${i + 1}`} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <img src={project.featuredImage} alt={project.title} class="project-hero" />
+        )}
         <div class="project-meta">
           {project.year && <span class="chip chip-year">{project.year}</span>}
           {techList.map((tech) => <span class="chip">{tech}</span>)}
@@ -53,7 +76,7 @@ const techList = project.technologies
             )}
           </div>
         )}
-      </div>
+      </header>
 
       <div class="project-content" set:html={project.content} />
     </article>
@@ -89,8 +112,6 @@ const techList = project.technologies
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 2rem;
-    
   }
 
   .project-hero {
@@ -98,6 +119,146 @@ const techList = project.technologies
     max-height: 460px;
     object-fit: cover;
     display: block;
+  }
+
+  /* Hero gallery - coverflow style */
+  .hero-gallery-cover {
+    position: relative;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2em;
+  }
+
+  .hero-gallery-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-gallery-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 58%;
+    height: 86%;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.4s ease, filter 0.4s ease;
+  }
+
+  .hero-gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+  }
+
+  .hero-gallery-slide[data-role='current'] {
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 3;
+    opacity: 1;
+    filter: none;
+    cursor: zoom-in;
+  }
+  .hero-gallery-slide[data-role='prev'] {
+    transform: translate(-94%, -50%) scale(0.8) rotate(-4deg);
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0.75);
+  }
+  .hero-gallery-slide[data-role='next'] {
+    transform: translate(-6%, -50%) scale(0.8) rotate(4deg);
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0.75);
+  }
+  .hero-gallery-slide[data-role='prev']:hover,
+  .hero-gallery-slide[data-role='next']:hover {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+  .hero-gallery-slide[data-role='hidden'] {
+    transform: translate(-50%, -50%) scale(0.55);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hero-gallery-cover .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+  }
+  .hero-gallery-cover .gallery-arrow:hover {
+    background: rgba(0, 0, 0, 0.65);
+  }
+  .hero-gallery-cover .gallery-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
+  .hero-gallery-cover .gallery-arrow.prev {
+    left: 0.75rem;
+  }
+  .hero-gallery-cover .gallery-arrow.next {
+    right: 0.75rem;
+  }
+
+  .hero-gallery-cover .gallery-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+    z-index: 4;
+  }
+  .hero-gallery-cover .gallery-dots .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .hero-gallery-cover .gallery-dots .dot.is-active {
+    background: var(--color-accent, #d97757);
+    transform: scale(1.25);
+  }
+
+  @media (max-width: 640px) {
+    .hero-gallery-cover {
+      height: 220px;
+    }
+    .hero-gallery-slide {
+      width: 72%;
+    }
+    .hero-gallery-slide[data-role='prev'] {
+      transform: translate(-88%, -50%) scale(0.78) rotate(-4deg);
+    }
+    .hero-gallery-slide[data-role='next'] {
+      transform: translate(-12%, -50%) scale(0.78) rotate(4deg);
+    }
   }
 
   .project-header h1 {
@@ -112,12 +273,13 @@ const techList = project.technologies
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
-    color: var(--color-text-muted, #1010c0);;
+    color: var(--color-text-muted, #1010c0);
   }
 
   .chip {
     font-size: 0.8rem;
     font-weight: 600;
+    color: #1a1a1a;
     padding: 0.3rem 0.75rem;
     border-radius: 999px;
     background: var(--color-chip-bg, #f0efe9);
@@ -150,10 +312,12 @@ const techList = project.technologies
   }
 
   .btn-primary {
-    background: var(--color-text, #1a1a1a);
-    color: var(--color-bg, #fff);
+    background: var(--color-text, #fff);
+    color: var(--color-bg, #1a1a1a);
   }
   .btn-primary:hover {
+    background: var(--color-accent, #d97757);
+    color: var(--color-text, #FFFFFF);
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
   }
@@ -173,6 +337,7 @@ const techList = project.technologies
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--color-text, #23232a);
+    text-align: justify;
   }
 
   .project-content :global(p) {
@@ -229,3 +394,70 @@ const techList = project.technologies
     }
   }
 </style>
+
+<script>
+  function setupHeroGallery(): void {
+    const galleries = document.querySelectorAll<HTMLElement>('[data-hero-gallery]');
+    galleries.forEach((gallery) => {
+      const slides = Array.from(gallery.querySelectorAll<HTMLElement>('[data-hero-slide]'));
+      const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-hero-dot]'));
+      const prevBtn = gallery.querySelector<HTMLButtonElement>('.gallery-arrow.prev');
+      const nextBtn = gallery.querySelector<HTMLButtonElement>('.gallery-arrow.next');
+      if (slides.length === 0) return;
+
+      let currentIndex = Math.floor((slides.length - 1) / 2);
+
+      function render(): void {
+        slides.forEach((slide, i) => {
+          const diff = i - currentIndex;
+          const role =
+            diff === 0 ? 'current' : diff === -1 ? 'prev' : diff === 1 ? 'next' : 'hidden';
+          slide.dataset.role = role;
+        });
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === currentIndex));
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
+      }
+
+      function goTo(index: number): void {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+        render();
+      }
+
+      prevBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goTo(currentIndex - 1);
+      });
+      nextBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goTo(currentIndex + 1);
+      });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      gallery.querySelector('.hero-gallery-track')?.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const slide = target.closest('[data-hero-slide]') as HTMLElement | null;
+        if (!slide) return;
+        const index = slides.indexOf(slide);
+        if (slide.dataset.role === 'current') {
+          // Abrir lightbox si está integrado
+          const img = slide.querySelector('img');
+          if (img) {
+            img.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+          }
+        } else {
+          goTo(index);
+        }
+      });
+
+      render();
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupHeroGallery);
+  if (document.readyState !== 'loading') {
+    setupHeroGallery();
+  } else {
+    document.addEventListener('DOMContentLoaded', setupHeroGallery);
+  }
+</script>

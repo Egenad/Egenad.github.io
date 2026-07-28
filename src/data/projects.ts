@@ -7,6 +7,8 @@ export interface Project {
 	github: string;
 	excerpt: string;
 	content: string;
+	category: 'Professional' | 'Personal' | 'Academic';
+	gallery?: string[];
 }
 
 import projectsData from './projects.json';
