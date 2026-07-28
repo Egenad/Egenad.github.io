@@ -47,7 +47,8 @@
       opacity 0.4s ease, filter 0.4s ease;
   }
 
-  .project-content .gallery-slide img {
+  .project-content .gallery-slide img,
+  .project-content .gallery-slide video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -165,7 +166,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
   }
-  .project-content .img-gallery-duo img {
+  .project-content .img-gallery-duo img,
+  .project-content .img-gallery-duo video {
     margin: 0;
     width: 100%;
     height: 260px;
@@ -173,12 +175,14 @@
     cursor: zoom-in;
     transition: transform 0.2s ease, filter 0.2s ease;
   }
-  .project-content .img-gallery-duo img:hover {
+  .project-content .img-gallery-duo img:hover,
+  .project-content .img-gallery-duo video:hover {
     transform: scale(1.02);
     filter: brightness(0.94);
   }
   @media (max-width: 640px) {
-    .project-content .img-gallery-duo img {
+    .project-content .img-gallery-duo img,
+    .project-content .img-gallery-duo video {
       height: 180px;
     }
   }
@@ -188,8 +192,9 @@
     cursor: zoom-in;
   }
 
-  /* Hero gallery images also zoomable */
-  .hero-gallery-slide[data-role='current'] img {
+  /* Hero gallery images/videos also zoomable */
+  .hero-gallery-slide[data-role='current'] img,
+  .hero-gallery-slide[data-role='current'] video {
     cursor: zoom-in;
   }
 
@@ -237,7 +242,8 @@
     align-items: center;
     gap: 0.75rem;
   }
-  .lightbox-figure img {
+  .lightbox-figure img,
+  .lightbox-figure video {
     max-width: 90vw;
     max-height: 78vh;
     object-fit: contain;
@@ -296,15 +302,19 @@
   // Todo este script mejora el HTML que llega por set:html (project.content)
   // después de que se haya pintado en el DOM. No depende de nada externo.
 
+  function isVideoSrc(src: string): boolean {
+    return /\.(mp4|webm|mov)(\?.*)?$/i.test(src);
+  }
+
   function setup(): void {
     const content = document.querySelector<HTMLElement>('.project-content');
     if (!content) return;
 
-    // 0) Incluir imágenes del hero gallery en la colección del lightbox
+    // 0) Incluir imágenes y videos del hero gallery en la colección del lightbox
     const heroGallery = document.querySelector<HTMLElement>('[data-hero-gallery]');
-    let heroImages: HTMLImageElement[] = [];
+    let heroMedia: (HTMLImageElement | HTMLVideoElement)[] = [];
     if (heroGallery) {
-      heroImages = Array.from(heroGallery.querySelectorAll<HTMLImageElement>('img'));
+      heroMedia = Array.from(heroGallery.querySelectorAll<HTMLImageElement | HTMLVideoElement>('img, video'));
     }
 
     // 1) Envolver iframes (YouTube, etc.) para que sean responsive
@@ -319,13 +329,13 @@
       wrapper.appendChild(iframe);
     });
 
-    // `allImages` se rellena más abajo, pero se declara ya porque las
+    // `allMedia` se rellena más abajo, pero se declara ya porque las
     // funciones de clic de las galerías (definidas en el paso 2) la
     // necesitan por referencia (closure), no por valor.
-    let allImages: HTMLImageElement[] = [];
+    let allMedia: (HTMLImageElement | HTMLVideoElement)[] = [];
 
-    function openImageGlobally(img: HTMLImageElement): void {
-      const idx = allImages.indexOf(img);
+    function openMediaGlobally(el: HTMLImageElement | HTMLVideoElement): void {
+      const idx = allMedia.indexOf(el);
       if (idx !== -1) openLightbox(idx);
     }
 
@@ -426,7 +436,7 @@
         if (!slide) return;
         const index = slides.indexOf(slide);
         if (slide.dataset.role === 'current') {
-          openImageGlobally(imgs[index]);
+          openMediaGlobally(imgs[index]);
         } else {
           goTo(index);
         }
@@ -435,27 +445,30 @@
       render();
     }
 
-    // 3) Todas las imágenes del artículo (ya reubicadas dentro de sus
+    // 3) Todas las imágenes/videos del artículo (ya reubicadas dentro de sus
     //    galerías si tocaba) más las del hero gallery forman la colección.
-    allImages = heroImages.concat(Array.from(content.querySelectorAll<HTMLImageElement>('img')));
-    if (allImages.length === 0) return;
+    const contentImages = Array.from(content.querySelectorAll<HTMLImageElement>('img'));
+    allMedia = heroMedia.concat(contentImages);
+    if (allMedia.length === 0) return;
 
-    allImages.forEach((img: HTMLImageElement) => {
-      if (!img.closest('.gallery-slide')) img.classList.add('lightbox-enabled');
+    allMedia.forEach((el) => {
+      if (el.tagName === 'IMG' && !el.closest('.gallery-slide')) {
+        el.classList.add('lightbox-enabled');
+      }
     });
 
     // Imágenes sueltas (no dentro de una galería): abren el lightbox directamente
-    allImages.forEach((img: HTMLImageElement) => {
+    contentImages.forEach((img: HTMLImageElement) => {
       if (img.closest('.gallery-slide') || img.closest('.img-gallery-duo')) return;
-      img.addEventListener('click', () => openImageGlobally(img));
+      img.addEventListener('click', () => openMediaGlobally(img));
     });
     content.querySelectorAll<HTMLImageElement>('.img-gallery-duo img').forEach((img) => {
-      img.addEventListener('click', () => openImageGlobally(img));
+      img.addEventListener('click', () => openMediaGlobally(img));
     });
 
-    // Hero gallery: click en imagen central abre lightbox
-    heroImages.forEach((img) => {
-      img.addEventListener('click', () => openImageGlobally(img));
+    // Hero gallery: click en imagen/video central abre lightbox
+    heroMedia.forEach((el) => {
+      el.addEventListener('click', () => openMediaGlobally(el));
     });
 
     // 4) Construir el lightbox una sola vez
@@ -472,36 +485,56 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
       <figure class="lightbox-figure">
-        <img src="" alt="" />
+        <div class="lightbox-media-wrap"></div>
         <span class="lightbox-counter"></span>
       </figure>
     `;
     document.body.appendChild(overlay);
 
-    const imgEl = overlay.querySelector<HTMLImageElement>('img');
-    const counterEl = overlay.querySelector<HTMLElement>('.lightbox-counter');
-    const closeBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-close');
-    const prevBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.prev');
-    const nextBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.next');
+    const mediaWrap = overlay.querySelector<HTMLElement>('.lightbox-media-wrap')!;
+    const counterEl = overlay.querySelector<HTMLElement>('.lightbox-counter')!;
+    const closeBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-close')!;
+    const prevBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.prev')!;
+    const nextBtn = overlay.querySelector<HTMLButtonElement>('.lightbox-nav.next')!;
 
-    // Si por lo que sea no se encuentra alguno de los nodos, abortamos aquí.
-    // A partir de este punto TypeScript ya sabe que ninguno es null.
-    if (!imgEl || !counterEl || !closeBtn || !prevBtn || !nextBtn) return;
+    if (!mediaWrap || !counterEl || !closeBtn || !prevBtn || !nextBtn) return;
 
     let currentIndex = 0;
 
     function show(index: number): void {
-      currentIndex = (index + allImages.length) % allImages.length;
-      const source = allImages[currentIndex];
-      // Non-null: ya comprobado más arriba; TS no propaga ese narrowing
-      // dentro de funciones anidadas definidas para ejecutarse más tarde.
-      imgEl!.src = source.currentSrc || source.src;
-      imgEl!.alt = source.alt || '';
-      counterEl!.textContent =
-        allImages.length > 1 ? `${currentIndex + 1} / ${allImages.length}` : '';
-      const multiple = allImages.length > 1;
-      prevBtn!.style.display = multiple ? 'flex' : 'none';
-      nextBtn!.style.display = multiple ? 'flex' : 'none';
+      currentIndex = (index + allMedia.length) % allMedia.length;
+      const source = allMedia[currentIndex];
+      const src = source.currentSrc || (source as HTMLImageElement).src || (source as HTMLVideoElement).src;
+      const isVideo = source.tagName === 'VIDEO' || isVideoSrc(src);
+
+      mediaWrap.innerHTML = '';
+      if (isVideo) {
+        const video = document.createElement('video');
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.style.maxWidth = '90vw';
+        video.style.maxHeight = '78vh';
+        video.style.borderRadius = '8px';
+        video.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.5)';
+        mediaWrap.appendChild(video);
+      } else {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = (source as HTMLImageElement).alt || '';
+        img.style.maxWidth = '90vw';
+        img.style.maxHeight = '78vh';
+        img.style.objectFit = 'contain';
+        img.style.borderRadius = '8px';
+        img.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.5)';
+        mediaWrap.appendChild(img);
+      }
+
+      counterEl.textContent =
+        allMedia.length > 1 ? `${currentIndex + 1} / ${allMedia.length}` : '';
+      const multiple = allMedia.length > 1;
+      prevBtn.style.display = multiple ? 'flex' : 'none';
+      nextBtn.style.display = multiple ? 'flex' : 'none';
     }
 
     function openLightbox(index: number): void {
@@ -511,6 +544,9 @@
     }
 
     function close(): void {
+      // Pausar cualquier video que esté reproduciéndose
+      const video = mediaWrap.querySelector('video');
+      if (video) video.pause();
       overlay.classList.remove('is-open');
       document.body.style.overflow = '';
     }

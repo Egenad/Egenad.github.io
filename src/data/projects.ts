@@ -8,9 +8,14 @@ export interface Project {
 	excerpt: string;
 	content: string;
 	category: 'Professional' | 'Personal' | 'Academic';
-	gallery?: string[];
+	gallery?: GalleryItem[];
 }
 
+export interface GalleryItem {
+	src: string;
+	type: 'image' | 'video';
+	alt?: string;
+}
 import projectsData from './projects.json';
 
 import gbeeContent from './projects/gbee.html?raw';
