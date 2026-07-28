@@ -74,7 +74,7 @@
     "title": "Golden Sacra (GB)",
     "year": "2024",
     "featuredImage": "/images/2024/11/titlescreen.png",
-    "technologies": "Z80 language, RGBDS, GBTD, GBMB",
+    "technologies": "Z80, RGBDS, GBTD, GBMB",
     "github": "",
     "category": "Academic",
     "gallery": [
@@ -109,7 +109,7 @@
     "title": "Redsea",
     "year": "2019",
     "featuredImage": "/images/2024/11/redsea_game.png",
-    "technologies": "Z80 Language, CPCTelera",
+    "technologies": "Z80, CPCTelera",
     "github": "https://github.com/Egenad/Redsea",
     "category": "Academic",
     "gallery": [
