@@ -3,11 +3,13 @@ export interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
+	imageWidth?: number;
+    imageHeight?: number;
 }
 
 import '../styles/global.css';
 
-const { title = 'Ángel J. Terol', description = 'Portfolio of Ángel J. Terol - Game and Software Developer', image } = Astro.props;
+const { title = 'Ángel J. Terol', description = 'Portfolio of Ángel J. Terol - Game and Software Developer', image, imageWidth = 1200, imageHeight = 630 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://angeljterol.dev');
 const ogImage = image ? new URL(image, canonicalURL).toString() : undefined;
@@ -28,6 +30,8 @@ const ogImage = image ? new URL(image, canonicalURL).toString() : undefined;
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL.toString()} />
+		{ogImage && <meta property="og:image:width" content={imageWidth.toString()} />}
+		{ogImage && <meta property="og:image:height" content={imageHeight.toString()} />}
 		{ogImage && <meta property="og:image" content={ogImage} />}
 
 		<!-- Twitter Card -->
