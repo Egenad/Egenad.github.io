@@ -8,11 +8,9 @@
     "github": "https://github.com/Egenad/GBee",
     "category": "Personal",
     "gallery": [
-      { "src": "/images/2025/gbee-2.png", "type": "image" },
-      { "src": "/images/2025/gbee-1.png", "type": "image" },
       { "src": "/images/2025/gbee-4.PNG", "type": "image" },
-      { "src": "/videos/gbee-demo.mp4", "type": "video" },
-      { "src": "/images/2025/gbee-3.png", "type": "image" }
+      { "src": "/images/2025/gbee-collage.png", "type": "image" },
+      { "src": "/videos/gbee-demo.mp4", "type": "video" }
     ],
     "excerpt": "GBee is an application that functions as a Game Boy emulator, developed natively for Android devices using the Kotlin programming language and Android Studio as its development environment. It is structured into modules that reflect the essential components of the original Game Boy's architecture."
   },
@@ -25,12 +23,10 @@
     "github": "https://github.com/Egenad/GoldenSacraUnity",
     "category": "Personal",
     "gallery": [
-      { "src": "/images/2025/golden_sacra_logo.PNG", "type": "image" },
-      { "src": "/images/2025/character_design.png", "type": "image" },
       { "src": "/images/2024/11/HighresScreenshot00001-copia.png", "type": "image" },
-      { "src": "/images/2025/golden-sacra-1.png", "type": "image" },
-      { "src": "/images/2025/golden-sacra-2.png", "type": "image" },
-      { "src": "/images/2025/golden-sacra-3.png", "type": "image" }
+      { "src": "/images/2025/golden-sacra-collage.png", "type": "image" },
+      { "src": "/images/2025/character_design.png", "type": "image" },
+      { "src": "/images/2025/golden_sacra_logo.PNG", "type": "image" }
     ],
     "excerpt": "This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the ha..."
   },
