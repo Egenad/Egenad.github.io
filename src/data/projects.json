@@ -12,7 +12,7 @@
       { "src": "/images/2025/gbee-collage.png", "type": "image" },
       { "src": "/videos/gbee-demo.mp4", "type": "video" }
     ],
-    "excerpt": "GBee is an application that functions as a Game Boy emulator, developed natively for Android devices using the Kotlin programming language and Android Studio as its development environment. It is structured into modules that reflect the essential components of the original Game Boy's architecture."
+    "excerpt": "GBee is a Game Boy (DMG) and Game Boy Color (CGB) emulator built from scratch in Kotlin for Android devices. The project features a complete emulation core with an SM83 CPU, a FIFO-based PPU, memory management with MBC support, timers, interrupts, DMA, and input handling. The app lets users import .gb and .gbc ROMs, manage a game library, run games with on-screen controls, and configure per-game settings. "
   },
   {
     "slug": "golden-sacra-remake",
@@ -28,7 +28,7 @@
       { "src": "/images/2025/character_design.png", "type": "image" },
       { "src": "/images/2025/golden_sacra_logo.PNG", "type": "image" }
     ],
-    "excerpt": "This is, for the moment, a work in progress project. The main goal is to remake the GB game I made in Z80, but without the several limitations I had with the ha..."
+    "excerpt": "A third-person dungeon explorer for mobile devices, built from scratch in Unity 6 with the Universal Render Pipeline (URP). The core gameplay is a turn-based grid movement system where the player advances one tile at a time through a procedurally generated dungeon using a room-and-corridor algorithm. "
   },
   {
     "slug": "zombiestation",
