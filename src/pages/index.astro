@@ -29,11 +29,14 @@ function getCardClass(cardIndex: number): string {
 				{projects.map((project, index) => {
 					const pageIndex = Math.floor(index / perPage);
 					const cardClass = getCardClass(index);
+					const posInPage = index % perPage;
 					return (
 						<ProjectCard
 							project={project}
 							class={`project-page-${pageIndex} ${cardClass}`}
-							style={pageIndex === 0 ? '' : 'display: none;'}
+							style={pageIndex === 0
+								? `--delay: ${posInPage * 0.1}s;`
+								: 'display: none;'}
 						/>
 					);
 				})}

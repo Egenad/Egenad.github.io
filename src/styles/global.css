@@ -284,7 +284,27 @@ main {
 	overflow: hidden;
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.50);
 	transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-	opacity: 1;
+
+	opacity: 0;
+	transform: translateY(24px);
+
+	animation: cardEnter 0.5s ease forwards;
+	animation-delay: var(--delay, 0s);
+}
+
+@keyframes cardEnter {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.project-card {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
 }
 
 .project-card:hover {
