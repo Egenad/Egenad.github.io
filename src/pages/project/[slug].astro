@@ -6,6 +6,7 @@ import Lightbox from '../../components/Lightbox.astro';
 import { projects } from '../../data/projects';
 import type { GalleryItem } from '../../data/projects';
 
+
 export async function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const ogImage = `/images/og/${project.slug}.jpg`;
 
 const gallery: GalleryItem[] = project.gallery ?? [{ src: project.featuredImage, type: 'image' }];
 const hasGallery = gallery.length > 1;
@@ -27,7 +29,7 @@ const techList = project.technologies
   : [];
 ---
 
-<Layout title={`${project.title} | Ángel J. Terol`} description={project.excerpt} image={project.featuredImage}>
+<Layout title={`${project.title} | Ángel J. Terol`} description={project.excerpt} image={ogImage}>
   <Header slot="header" />
 
   <div class="container">
